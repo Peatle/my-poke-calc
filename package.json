@@ -8,7 +8,11 @@
     "build": "tsc && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "data:fetch-names": "node scripts/fetchNames.js",
+    "data:fetch-stats": "node scripts/fetchStats.js",
+    "data:prune": "node scripts/pruneData.js",
+    "data:update": "npm run data:fetch-names && npm run data:fetch-stats && npm run data:prune"
   },
   "dependencies": {
     "pokemon": "^3.3.0",
