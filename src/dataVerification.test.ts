@@ -147,9 +147,9 @@ describe('寶可夢數據完整性驗證', () => {
             expect(diglett?.stats['attack']).toBe(55);
         });
 
-        it('超級胡地 (alakazam-mega) 的特防應由 95 增加到 105', () => {
+        it('超級胡地 (alakazam-mega) 應已被 pruneData 剔除，資料中不應存在', () => {
             const alakazamMega = gen7Stats.find(p => p.key === 'alakazam-mega');
-            expect(alakazamMega?.stats['special-defense']).toBe(105);
+            expect(alakazamMega).toBeUndefined();
         });
 
         it('大蔥鴨 (ID: 83) 的攻擊應由 65 增加到 90', () => {
@@ -192,10 +192,9 @@ describe('寶可夢數據完整性驗證', () => {
             expect(aegislashShield?.stats['special-defense']).toBe(140);
         });
 
-        it('堅盾劍怪刀劍形態 (aegislash-blade) 的攻擊與特攻應由 150 降低到 140', () => {
+        it('堅盾劍怪刀劍形態 (aegislash-blade) 應已被 pruneData 剔除，資料中不應存在', () => {
             const aegislashBlade = gen8Stats.find(p => p.key === 'aegislash-blade');
-            expect(aegislashBlade?.stats['attack']).toBe(140);
-            expect(aegislashBlade?.stats['special-attack']).toBe(140);
+            expect(aegislashBlade).toBeUndefined();
         });
     });
 
@@ -250,6 +249,17 @@ describe('寶可夢數據完整性驗證', () => {
             expect(rotomForms.length).toBeGreaterThanOrEqual(6);
         });
 
+        it('小隕星 (Minior) 應只保留 minior-red-meteor 一筆（meteor 非戰鬥型態代表）', () => {
+            const miniorEntries = gen7Stats.filter(p => p.key.startsWith('minior-'));
+            expect(miniorEntries).toHaveLength(1);
+            expect(miniorEntries[0].key).toBe('minior-red-meteor');
+        });
+
+        it('多語系字典中 Minior 也應只有 minior-red-meteor 一筆', () => {
+            const miniorKeys = Object.keys(zhNames).filter(k => k.startsWith('minior-'));
+            expect(miniorKeys).toHaveLength(1);
+            expect(miniorKeys[0]).toBe('minior-red-meteor');
+        });
     });
 
     describe('多語系字典連動驗證', () => {
@@ -270,14 +280,12 @@ describe('寶可夢數據完整性驗證', () => {
     });
 
     describe('數值合理性稽核', () => {
-        it('所有寶可夢的種族值總和 (BST) 應在合理範圍內 (175 ~ 1125)', () => {
-            // 永者超極巨化形態 (eternatus-eternamax) BST 為 1125，為遊戲中已知最高值
-            const knownExceptions = ['eternatus-eternamax'];
+        it('所有寶可夢的種族值總和 (BST) 應在合理範圍內 (175 ~ 780)', () => {
+            // eternatus-eternamax 已被 pruneData 剔除，無需額外例外處理
             gen9Stats.forEach(p => {
                 const bst = Object.values(p.stats).reduce((a, b) => a + b, 0);
-                const maxBst = knownExceptions.includes(p.key) ? 1200 : 780;
                 expect(bst, `ID ${p.id} (${p.key}) BST 異常: ${bst}`).toBeGreaterThanOrEqual(170);
-                expect(bst, `ID ${p.id} (${p.key}) BST 異常: ${bst}`).toBeLessThanOrEqual(maxBst);
+                expect(bst, `ID ${p.id} (${p.key}) BST 異常: ${bst}`).toBeLessThanOrEqual(780);
             });
         });
     });

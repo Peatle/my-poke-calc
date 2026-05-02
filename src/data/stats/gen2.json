@@ -39,32 +39,6 @@
     "system": "DV"
   },
   {
-    "id": 3,
-    "key": "venusaur-mega",
-    "stats": {
-      "hp": 80,
-      "attack": 100,
-      "defense": 123,
-      "special-attack": 122,
-      "special-defense": 120,
-      "speed": 80
-    },
-    "system": "DV"
-  },
-  {
-    "id": 3,
-    "key": "venusaur-gmax",
-    "stats": {
-      "hp": 80,
-      "attack": 82,
-      "defense": 83,
-      "special-attack": 100,
-      "special-defense": 100,
-      "speed": 80
-    },
-    "system": "DV"
-  },
-  {
     "id": 4,
     "key": "charmander",
     "stats": {
@@ -93,45 +67,6 @@
   {
     "id": 6,
     "key": "charizard",
-    "stats": {
-      "hp": 78,
-      "attack": 84,
-      "defense": 78,
-      "special-attack": 109,
-      "special-defense": 85,
-      "speed": 100
-    },
-    "system": "DV"
-  },
-  {
-    "id": 6,
-    "key": "charizard-mega-x",
-    "stats": {
-      "hp": 78,
-      "attack": 130,
-      "defense": 111,
-      "special-attack": 130,
-      "special-defense": 85,
-      "speed": 100
-    },
-    "system": "DV"
-  },
-  {
-    "id": 6,
-    "key": "charizard-mega-y",
-    "stats": {
-      "hp": 78,
-      "attack": 104,
-      "defense": 78,
-      "special-attack": 159,
-      "special-defense": 115,
-      "speed": 100
-    },
-    "system": "DV"
-  },
-  {
-    "id": 6,
-    "key": "charizard-gmax",
     "stats": {
       "hp": 78,
       "attack": 84,
@@ -182,32 +117,6 @@
     "system": "DV"
   },
   {
-    "id": 9,
-    "key": "blastoise-mega",
-    "stats": {
-      "hp": 79,
-      "attack": 103,
-      "defense": 120,
-      "special-attack": 135,
-      "special-defense": 115,
-      "speed": 78
-    },
-    "system": "DV"
-  },
-  {
-    "id": 9,
-    "key": "blastoise-gmax",
-    "stats": {
-      "hp": 79,
-      "attack": 83,
-      "defense": 100,
-      "special-attack": 85,
-      "special-defense": 105,
-      "speed": 78
-    },
-    "system": "DV"
-  },
-  {
     "id": 10,
     "key": "caterpie",
     "stats": {
@@ -241,19 +150,6 @@
       "attack": 45,
       "defense": 50,
       "special-attack": 80,
-      "special-defense": 80,
-      "speed": 70
-    },
-    "system": "DV"
-  },
-  {
-    "id": 12,
-    "key": "butterfree-gmax",
-    "stats": {
-      "hp": 60,
-      "attack": 45,
-      "defense": 50,
-      "special-attack": 90,
       "special-defense": 80,
       "speed": 70
     },
@@ -299,19 +195,6 @@
     "system": "DV"
   },
   {
-    "id": 15,
-    "key": "beedrill-mega",
-    "stats": {
-      "hp": 65,
-      "attack": 150,
-      "defense": 40,
-      "special-attack": 15,
-      "special-defense": 80,
-      "speed": 145
-    },
-    "system": "DV"
-  },
-  {
     "id": 16,
     "key": "pidgey",
     "stats": {
@@ -347,19 +230,6 @@
       "special-attack": 70,
       "special-defense": 70,
       "speed": 91
-    },
-    "system": "DV"
-  },
-  {
-    "id": 18,
-    "key": "pidgeot-mega",
-    "stats": {
-      "hp": 83,
-      "attack": 80,
-      "defense": 80,
-      "special-attack": 135,
-      "special-defense": 80,
-      "speed": 121
     },
     "system": "DV"
   },
@@ -689,19 +559,6 @@
     "system": "DV"
   },
   {
-    "id": 25,
-    "key": "pikachu-gmax",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "DV"
-  },
-  {
     "id": 26,
     "key": "raichu",
     "stats": {
@@ -724,32 +581,6 @@
       "special-attack": 95,
       "special-defense": 85,
       "speed": 110
-    },
-    "system": "DV"
-  },
-  {
-    "id": 26,
-    "key": "raichu-mega-x",
-    "stats": {
-      "hp": 60,
-      "attack": 135,
-      "defense": 95,
-      "special-attack": 90,
-      "special-defense": 95,
-      "speed": 110
-    },
-    "system": "DV"
-  },
-  {
-    "id": 26,
-    "key": "raichu-mega-y",
-    "stats": {
-      "hp": 60,
-      "attack": 100,
-      "defense": 55,
-      "special-attack": 160,
-      "special-defense": 80,
-      "speed": 130
     },
     "system": "DV"
   },
@@ -906,19 +737,6 @@
       "special-attack": 85,
       "special-defense": 90,
       "speed": 60
-    },
-    "system": "DV"
-  },
-  {
-    "id": 36,
-    "key": "clefable-mega",
-    "stats": {
-      "hp": 95,
-      "attack": 80,
-      "defense": 93,
-      "special-attack": 135,
-      "special-defense": 110,
-      "speed": 70
     },
     "system": "DV"
   },
@@ -1209,19 +1027,6 @@
     "system": "DV"
   },
   {
-    "id": 52,
-    "key": "meowth-gmax",
-    "stats": {
-      "hp": 40,
-      "attack": 45,
-      "defense": 35,
-      "special-attack": 40,
-      "special-defense": 40,
-      "speed": 90
-    },
-    "system": "DV"
-  },
-  {
     "id": 53,
     "key": "persian",
     "stats": {
@@ -1430,19 +1235,6 @@
     "system": "DV"
   },
   {
-    "id": 65,
-    "key": "alakazam-mega",
-    "stats": {
-      "hp": 55,
-      "attack": 50,
-      "defense": 65,
-      "special-attack": 175,
-      "special-defense": 95,
-      "speed": 150
-    },
-    "system": "DV"
-  },
-  {
     "id": 66,
     "key": "machop",
     "stats": {
@@ -1471,19 +1263,6 @@
   {
     "id": 68,
     "key": "machamp",
-    "stats": {
-      "hp": 90,
-      "attack": 130,
-      "defense": 80,
-      "special-attack": 65,
-      "special-defense": 85,
-      "speed": 55
-    },
-    "system": "DV"
-  },
-  {
-    "id": 68,
-    "key": "machamp-gmax",
     "stats": {
       "hp": 90,
       "attack": 130,
@@ -1529,19 +1308,6 @@
       "defense": 65,
       "special-attack": 100,
       "special-defense": 60,
-      "speed": 70
-    },
-    "system": "DV"
-  },
-  {
-    "id": 71,
-    "key": "victreebel-mega",
-    "stats": {
-      "hp": 80,
-      "attack": 125,
-      "defense": 85,
-      "special-attack": 135,
-      "special-defense": 95,
       "speed": 70
     },
     "system": "DV"
@@ -1736,19 +1502,6 @@
       "attack": 75,
       "defense": 110,
       "special-attack": 100,
-      "special-defense": 80,
-      "speed": 30
-    },
-    "system": "DV"
-  },
-  {
-    "id": 80,
-    "key": "slowbro-mega",
-    "stats": {
-      "hp": 95,
-      "attack": 75,
-      "defense": 180,
-      "special-attack": 130,
       "special-defense": 80,
       "speed": 30
     },
@@ -1989,32 +1742,6 @@
     "system": "DV"
   },
   {
-    "id": 94,
-    "key": "gengar-mega",
-    "stats": {
-      "hp": 60,
-      "attack": 65,
-      "defense": 80,
-      "special-attack": 170,
-      "special-defense": 95,
-      "speed": 130
-    },
-    "system": "DV"
-  },
-  {
-    "id": 94,
-    "key": "gengar-gmax",
-    "stats": {
-      "hp": 60,
-      "attack": 65,
-      "defense": 60,
-      "special-attack": 130,
-      "special-defense": 75,
-      "speed": 110
-    },
-    "system": "DV"
-  },
-  {
     "id": 95,
     "key": "onix",
     "stats": {
@@ -2069,19 +1796,6 @@
   {
     "id": 99,
     "key": "kingler",
-    "stats": {
-      "hp": 55,
-      "attack": 130,
-      "defense": 115,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 75
-    },
-    "system": "DV"
-  },
-  {
-    "id": 99,
-    "key": "kingler-gmax",
     "stats": {
       "hp": 55,
       "attack": 130,
@@ -2379,19 +2093,6 @@
     "system": "DV"
   },
   {
-    "id": 115,
-    "key": "kangaskhan-mega",
-    "stats": {
-      "hp": 105,
-      "attack": 125,
-      "defense": 100,
-      "special-attack": 60,
-      "special-defense": 100,
-      "speed": 100
-    },
-    "system": "DV"
-  },
-  {
     "id": 116,
     "key": "horsea",
     "stats": {
@@ -2466,19 +2167,6 @@
       "special-attack": 100,
       "special-defense": 85,
       "speed": 115
-    },
-    "system": "DV"
-  },
-  {
-    "id": 121,
-    "key": "starmie-mega",
-    "stats": {
-      "hp": 60,
-      "attack": 100,
-      "defense": 105,
-      "special-attack": 130,
-      "special-defense": 105,
-      "speed": 120
     },
     "system": "DV"
   },
@@ -2574,19 +2262,6 @@
     "system": "DV"
   },
   {
-    "id": 127,
-    "key": "pinsir-mega",
-    "stats": {
-      "hp": 65,
-      "attack": 155,
-      "defense": 120,
-      "special-attack": 65,
-      "special-defense": 90,
-      "speed": 105
-    },
-    "system": "DV"
-  },
-  {
     "id": 128,
     "key": "tauros",
     "stats": {
@@ -2665,34 +2340,8 @@
     "system": "DV"
   },
   {
-    "id": 130,
-    "key": "gyarados-mega",
-    "stats": {
-      "hp": 95,
-      "attack": 155,
-      "defense": 109,
-      "special-attack": 70,
-      "special-defense": 130,
-      "speed": 81
-    },
-    "system": "DV"
-  },
-  {
     "id": 131,
     "key": "lapras",
-    "stats": {
-      "hp": 130,
-      "attack": 85,
-      "defense": 80,
-      "special-attack": 85,
-      "special-defense": 95,
-      "speed": 60
-    },
-    "system": "DV"
-  },
-  {
-    "id": 131,
-    "key": "lapras-gmax",
     "stats": {
       "hp": 130,
       "attack": 85,
@@ -2739,19 +2388,6 @@
       "special-attack": 65,
       "special-defense": 85,
       "speed": 75
-    },
-    "system": "DV"
-  },
-  {
-    "id": 133,
-    "key": "eevee-gmax",
-    "stats": {
-      "hp": 55,
-      "attack": 55,
-      "defense": 50,
-      "special-attack": 45,
-      "special-defense": 65,
-      "speed": 55
     },
     "system": "DV"
   },
@@ -2873,34 +2509,8 @@
     "system": "DV"
   },
   {
-    "id": 142,
-    "key": "aerodactyl-mega",
-    "stats": {
-      "hp": 80,
-      "attack": 135,
-      "defense": 85,
-      "special-attack": 70,
-      "special-defense": 95,
-      "speed": 150
-    },
-    "system": "DV"
-  },
-  {
     "id": 143,
     "key": "snorlax",
-    "stats": {
-      "hp": 160,
-      "attack": 110,
-      "defense": 65,
-      "special-attack": 65,
-      "special-defense": 110,
-      "speed": 30
-    },
-    "system": "DV"
-  },
-  {
-    "id": 143,
-    "key": "snorlax-gmax",
     "stats": {
       "hp": 160,
       "attack": 110,
@@ -3029,19 +2639,6 @@
     "system": "DV"
   },
   {
-    "id": 149,
-    "key": "dragonite-mega",
-    "stats": {
-      "hp": 91,
-      "attack": 124,
-      "defense": 115,
-      "special-attack": 145,
-      "special-defense": 125,
-      "speed": 100
-    },
-    "system": "DV"
-  },
-  {
     "id": 150,
     "key": "mewtwo",
     "stats": {
@@ -3051,32 +2648,6 @@
       "special-attack": 154,
       "special-defense": 90,
       "speed": 130
-    },
-    "system": "DV"
-  },
-  {
-    "id": 150,
-    "key": "mewtwo-mega-x",
-    "stats": {
-      "hp": 106,
-      "attack": 190,
-      "defense": 100,
-      "special-attack": 154,
-      "special-defense": 100,
-      "speed": 130
-    },
-    "system": "DV"
-  },
-  {
-    "id": 150,
-    "key": "mewtwo-mega-y",
-    "stats": {
-      "hp": 106,
-      "attack": 150,
-      "defense": 70,
-      "special-attack": 194,
-      "special-defense": 120,
-      "speed": 140
     },
     "system": "DV"
   },
@@ -3128,19 +2699,6 @@
       "defense": 100,
       "special-attack": 83,
       "special-defense": 100,
-      "speed": 80
-    },
-    "system": "DV"
-  },
-  {
-    "id": 154,
-    "key": "meganium-mega",
-    "stats": {
-      "hp": 80,
-      "attack": 92,
-      "defense": 115,
-      "special-attack": 143,
-      "special-defense": 115,
       "speed": 80
     },
     "system": "DV"
@@ -3232,19 +2790,6 @@
       "defense": 100,
       "special-attack": 79,
       "special-defense": 83,
-      "speed": 78
-    },
-    "system": "DV"
-  },
-  {
-    "id": 160,
-    "key": "feraligatr-mega",
-    "stats": {
-      "hp": 85,
-      "attack": 160,
-      "defense": 125,
-      "special-attack": 89,
-      "special-defense": 93,
       "speed": 78
     },
     "system": "DV"
@@ -3519,19 +3064,6 @@
       "special-attack": 115,
       "special-defense": 90,
       "speed": 55
-    },
-    "system": "DV"
-  },
-  {
-    "id": 181,
-    "key": "ampharos-mega",
-    "stats": {
-      "hp": 90,
-      "attack": 95,
-      "defense": 105,
-      "special-attack": 165,
-      "special-defense": 110,
-      "speed": 45
     },
     "system": "DV"
   },
@@ -3913,19 +3445,6 @@
     "system": "DV"
   },
   {
-    "id": 208,
-    "key": "steelix-mega",
-    "stats": {
-      "hp": 75,
-      "attack": 125,
-      "defense": 230,
-      "special-attack": 55,
-      "special-defense": 95,
-      "speed": 30
-    },
-    "system": "DV"
-  },
-  {
     "id": 209,
     "key": "snubbull",
     "stats": {
@@ -3991,19 +3510,6 @@
     "system": "DV"
   },
   {
-    "id": 212,
-    "key": "scizor-mega",
-    "stats": {
-      "hp": 70,
-      "attack": 150,
-      "defense": 140,
-      "special-attack": 65,
-      "special-defense": 100,
-      "speed": 75
-    },
-    "system": "DV"
-  },
-  {
     "id": 213,
     "key": "shuckle",
     "stats": {
@@ -4026,19 +3532,6 @@
       "special-attack": 40,
       "special-defense": 95,
       "speed": 85
-    },
-    "system": "DV"
-  },
-  {
-    "id": 214,
-    "key": "heracross-mega",
-    "stats": {
-      "hp": 80,
-      "attack": 185,
-      "defense": 115,
-      "special-attack": 40,
-      "special-defense": 105,
-      "speed": 75
     },
     "system": "DV"
   },
@@ -4238,19 +3731,6 @@
     "system": "DV"
   },
   {
-    "id": 227,
-    "key": "skarmory-mega",
-    "stats": {
-      "hp": 65,
-      "attack": 140,
-      "defense": 110,
-      "special-attack": 40,
-      "special-defense": 100,
-      "speed": 110
-    },
-    "system": "DV"
-  },
-  {
     "id": 228,
     "key": "houndour",
     "stats": {
@@ -4273,19 +3753,6 @@
       "special-attack": 110,
       "special-defense": 80,
       "speed": 95
-    },
-    "system": "DV"
-  },
-  {
-    "id": 229,
-    "key": "houndoom-mega",
-    "stats": {
-      "hp": 75,
-      "attack": 90,
-      "defense": 90,
-      "special-attack": 140,
-      "special-defense": 90,
-      "speed": 115
     },
     "system": "DV"
   },
@@ -4533,19 +4000,6 @@
       "special-attack": 95,
       "special-defense": 100,
       "speed": 61
-    },
-    "system": "DV"
-  },
-  {
-    "id": 248,
-    "key": "tyranitar-mega",
-    "stats": {
-      "hp": 100,
-      "attack": 164,
-      "defense": 150,
-      "special-attack": 95,
-      "special-defense": 120,
-      "speed": 71
     },
     "system": "DV"
   },
