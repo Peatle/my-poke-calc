@@ -286,19 +286,6 @@
     "system": "IV"
   },
   {
-    "id": 20,
-    "key": "raticate-totem-alola",
-    "stats": {
-      "hp": 75,
-      "attack": 71,
-      "defense": 70,
-      "special-attack": 40,
-      "special-defense": 80,
-      "speed": 77
-    },
-    "system": "IV"
-  },
-  {
     "id": 21,
     "key": "spearow",
     "stats": {
@@ -1679,19 +1666,6 @@
   {
     "id": 105,
     "key": "marowak-alola",
-    "stats": {
-      "hp": 60,
-      "attack": 80,
-      "defense": 110,
-      "special-attack": 50,
-      "special-defense": 80,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
-    "id": 105,
-    "key": "marowak-totem",
     "stats": {
       "hp": 60,
       "attack": 80,
@@ -10517,19 +10491,6 @@
     "system": "IV"
   },
   {
-    "id": 735,
-    "key": "gumshoos-totem",
-    "stats": {
-      "hp": 88,
-      "attack": 110,
-      "defense": 60,
-      "special-attack": 55,
-      "special-defense": 60,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
     "id": 736,
     "key": "grubbin",
     "stats": {
@@ -10558,19 +10519,6 @@
   {
     "id": 738,
     "key": "vikavolt",
-    "stats": {
-      "hp": 77,
-      "attack": 70,
-      "defense": 90,
-      "special-attack": 145,
-      "special-defense": 75,
-      "speed": 43
-    },
-    "system": "IV"
-  },
-  {
-    "id": 738,
-    "key": "vikavolt-totem",
     "stats": {
       "hp": 77,
       "attack": 70,
@@ -10675,19 +10623,6 @@
   {
     "id": 743,
     "key": "ribombee",
-    "stats": {
-      "hp": 60,
-      "attack": 55,
-      "defense": 60,
-      "special-attack": 95,
-      "special-defense": 70,
-      "speed": 124
-    },
-    "system": "IV"
-  },
-  {
-    "id": 743,
-    "key": "ribombee-totem",
     "stats": {
       "hp": 60,
       "attack": 55,
@@ -10855,19 +10790,6 @@
     "system": "IV"
   },
   {
-    "id": 752,
-    "key": "araquanid-totem",
-    "stats": {
-      "hp": 68,
-      "attack": 70,
-      "defense": 92,
-      "special-attack": 50,
-      "special-defense": 132,
-      "speed": 42
-    },
-    "system": "IV"
-  },
-  {
     "id": 753,
     "key": "fomantis",
     "stats": {
@@ -10883,19 +10805,6 @@
   {
     "id": 754,
     "key": "lurantis",
-    "stats": {
-      "hp": 70,
-      "attack": 105,
-      "defense": 90,
-      "special-attack": 80,
-      "special-defense": 90,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
-    "id": 754,
-    "key": "lurantis-totem",
     "stats": {
       "hp": 70,
       "attack": 105,
@@ -10948,19 +10857,6 @@
   {
     "id": 758,
     "key": "salazzle",
-    "stats": {
-      "hp": 68,
-      "attack": 64,
-      "defense": 60,
-      "special-attack": 111,
-      "special-defense": 60,
-      "speed": 117
-    },
-    "system": "IV"
-  },
-  {
-    "id": 758,
-    "key": "salazzle-totem",
     "stats": {
       "hp": 68,
       "attack": 64,
@@ -11219,34 +11115,8 @@
     "system": "IV"
   },
   {
-    "id": 777,
-    "key": "togedemaru-totem",
-    "stats": {
-      "hp": 65,
-      "attack": 98,
-      "defense": 63,
-      "special-attack": 40,
-      "special-defense": 73,
-      "speed": 96
-    },
-    "system": "IV"
-  },
-  {
     "id": 778,
     "key": "mimikyu-disguised",
-    "stats": {
-      "hp": 55,
-      "attack": 90,
-      "defense": 80,
-      "special-attack": 50,
-      "special-defense": 105,
-      "speed": 96
-    },
-    "system": "IV"
-  },
-  {
-    "id": 778,
-    "key": "mimikyu-totem-disguised",
     "stats": {
       "hp": 55,
       "attack": 90,
@@ -11325,19 +11195,6 @@
   {
     "id": 784,
     "key": "kommo-o",
-    "stats": {
-      "hp": 75,
-      "attack": 110,
-      "defense": 125,
-      "special-attack": 100,
-      "special-defense": 105,
-      "speed": 85
-    },
-    "system": "IV"
-  },
-  {
-    "id": 784,
-    "key": "kommo-o-totem",
     "stats": {
       "hp": 75,
       "attack": 110,
