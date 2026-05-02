@@ -1,73 +1,130 @@
-# React + TypeScript + Vite
+# My Poke Calc
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A **mobile-friendly Pokémon Individual Value (IV) calculator** with cross-generation base stat support.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![License](https://img.shields.io/badge/License-Non--commercial-green)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> [!NOTE]
+> 🚧 This project is currently under active development. Features and UI are subject to change.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 📱 **Mobile-first design** — optimized for handheld use during gameplay
+- 🔢 **IV calculation** across all nine mainline generations (Gen 1–9)
+- 📊 **Accurate base stats** sourced from PokéAPI, curated per generation
+- 🌍 **Multi-language Pokémon names** (localization support)
+- 🧹 **Clean dataset** — regional forms, partner Pokémon, and cosmetic-only variants with identical stats are filtered out to reduce noise
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Layer | Technology |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build Tool | Vite 6 |
+| Styling | Tailwind CSS |
+| Data | PokéAPI + `pokemon` npm package |
+| Testing | Vitest |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+git clone https://github.com/Peatle/my-poke-calc.git
+cd my-poke-calc
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The app will be available at `http://localhost:5173`.
+
+---
+
+## 📦 Data Management
+
+Pokémon stat data is fetched from [PokéAPI](https://pokeapi.co/) and stored locally as JSON files under `src/data/stats/`. The following npm scripts manage the full data pipeline:
+
+| Command | Description |
+|---|---|
+| `npm run data:fetch-names` | Fetch Pokémon names in all supported languages |
+| `npm run data:fetch-stats` | Fetch base stats for every generation |
+| `npm run data:prune` | Clean the dataset (remove redundant forms, regional variants, etc.) |
+| `npm run data:update` | Run all of the above in sequence |
+
+> [!IMPORTANT]
+> Always run `npm run data:update` after cloning if you want the latest data, or if you modify any fetch/prune scripts.
+
+---
+
+## 🧪 Testing
+
+Data integrity is verified via automated tests:
+
+```bash
+npm test
+```
+
+Tests are located in `src/dataVerification.test.ts` and cover:
+
+- Correct Pokémon count per generation
+- Presence of expected entries
+- Absence of excluded forms (e.g., Minior color variants, partner Pikachu/Eevee)
+- Stat data completeness
+
+---
+
+## 📁 Project Structure
+
+```
+my-poke-calc/
+├── public/                  # Static assets
+├── scripts/                 # Data pipeline scripts (Node.js)
+│   ├── fetchNames.js        # Fetch localized Pokémon names
+│   ├── fetchStats.js        # Fetch per-generation base stats
+│   └── pruneData.js         # Remove redundant data entries
+├── src/
+│   ├── data/
+│   │   └── stats/           # Curated JSON stat files (gen1.json – gen9.json)
+│   ├── locales/             # Localized Pokémon name data
+│   ├── App.tsx
+│   └── dataVerification.test.ts
+├── package.json
+└── vite.config.ts
+```
+
+---
+
+## 🤝 Contributing
+
+This is a personal non-commercial project shared freely for the Pokémon community. Feel free to open issues or pull requests for bug reports, data corrections, or feature suggestions!
+
+---
+
+## 📜 Credits
+
+- Pokémon data sourced from [PokéAPI](https://pokeapi.co/)
+- Pokémon name data via the [`pokemon`](https://www.npmjs.com/package/pokemon) npm package
+- Pokémon and all related names are trademarks of Nintendo / Game Freak / The Pokémon Company
+
+---
+
+*Built with ❤️ for the Pokémon community.*
