@@ -312,12 +312,36 @@ describe('寶可夢數據完整性驗證', () => {
             expect(gen8Stats.some(p => p.key.includes('-totem'))).toBe(false);
             expect(gen9Stats.some(p => p.key.includes('-totem'))).toBe(false);
         });
+    });
+
+    // -----------------------------------------------------------------------
+    // 純對戰型態排除驗證
+    // -----------------------------------------------------------------------
+    describe('純對戰型態排除驗證', () => {
+        it('極巨化形態應被全部剔除', () => {
+            expect(gen8Stats.some(p => p.key.includes('-gmax'))).toBe(false);
+            expect(gen9Stats.some(p => p.key.includes('-gmax'))).toBe(false);
+        });
 
         it('MEGA 形態應被全部剔除', () => {
             expect(gen6Stats.some(p => p.key.includes('-mega'))).toBe(false);
             expect(gen7Stats.some(p => p.key.includes('-mega'))).toBe(false);
             expect(gen8Stats.some(p => p.key.includes('-mega'))).toBe(false);
             expect(gen9Stats.some(p => p.key.includes('-mega'))).toBe(false);
+        });
+
+        it('原始回歸形態應被全部剔除', () => {
+            expect(gen6Stats.some(p => p.key.includes('-primal'))).toBe(false);
+            expect(gen7Stats.some(p => p.key.includes('-primal'))).toBe(false);
+            expect(gen8Stats.some(p => p.key.includes('-primal'))).toBe(false);
+            expect(gen9Stats.some(p => p.key.includes('-primal'))).toBe(false);
+        });
+
+        it('達摩模式形態應被全部剔除', () => {
+            expect(gen6Stats.some(p => p.key.includes('-zen'))).toBe(false);
+            expect(gen7Stats.some(p => p.key.includes('-zen'))).toBe(false);
+            expect(gen8Stats.some(p => p.key.includes('-zen'))).toBe(false);
+            expect(gen9Stats.some(p => p.key.includes('-zen'))).toBe(false);
         });
     });
 
