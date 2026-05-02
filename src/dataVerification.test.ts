@@ -235,11 +235,11 @@ describe('寶可夢數據完整性驗證', () => {
     // 地區型態與特殊型態世代排除驗證
     // -----------------------------------------------------------------------
     describe('地區型態與特殊型態世代排除驗證', () => {
-        it('第一至第六世代不應包含阿羅拉 (-alola) 或霸主 (-totem) 型態', () => {
-            const hasAlolaOrTotem = (stats: any[]) => stats.some(p => p.key.includes('-alola') || p.key.includes('-totem'));
-            expect(hasAlolaOrTotem(gen1Stats)).toBe(false);
-            expect(hasAlolaOrTotem(gen2Stats)).toBe(false);
-            expect(hasAlolaOrTotem(gen6Stats)).toBe(false);
+        it('第一至第六世代不應包含阿羅拉 (-alola) 型態', () => {
+            const hasAlola = (stats: any[]) => stats.some(p => p.key.includes('-alola'));
+            expect(hasAlola(gen1Stats)).toBe(false);
+            expect(hasAlola(gen2Stats)).toBe(false);
+            expect(hasAlola(gen6Stats)).toBe(false);
         });
 
         it('第七世代應包含阿羅拉型態', () => {
@@ -304,6 +304,20 @@ describe('寶可夢數據完整性驗證', () => {
             ];
             const hasOtherCosmetics = gen9Stats.some(p => cosmeticSuffixes.some(suffix => p.key.includes(suffix)));
             expect(hasOtherCosmetics).toBe(false);
+        });
+
+        it('霸主型態應被全部剔除', () => {
+            expect(gen6Stats.some(p => p.key.includes('-totem'))).toBe(false);
+            expect(gen7Stats.some(p => p.key.includes('-totem'))).toBe(false);
+            expect(gen8Stats.some(p => p.key.includes('-totem'))).toBe(false);
+            expect(gen9Stats.some(p => p.key.includes('-totem'))).toBe(false);
+        });
+
+        it('MEGA 形態應被全部剔除', () => {
+            expect(gen6Stats.some(p => p.key.includes('-mega'))).toBe(false);
+            expect(gen7Stats.some(p => p.key.includes('-mega'))).toBe(false);
+            expect(gen8Stats.some(p => p.key.includes('-mega'))).toBe(false);
+            expect(gen9Stats.some(p => p.key.includes('-mega'))).toBe(false);
         });
     });
 
