@@ -25,7 +25,32 @@ const EXCLUDED = [
     '-gorging',     // 一口吞形態 (古月鳥)
     '-gulping',     // 大口吞形態 (古月鳥)
     '-terastal',    // 太晶化專屬型態
-    '-stellar'      // 星晶化專屬型態
+    '-stellar',     // 星晶化專屬型態
+    '-starter',     // 搭檔皮卡丘、搭檔伊布 (Let's Go 專屬)
+    '-rock-star',   // 換裝皮卡丘 (搖滾)
+    '-belle',       // 換裝皮卡丘 (貴婦)
+    '-pop-star',    // 換裝皮卡丘 (偶像)
+    '-phd',         // 換裝皮卡丘 (博士)
+    '-libre',       // 換裝皮卡丘 (面罩摔角手)
+    '-cosplay',     // 換裝皮卡丘 (基礎)
+    '-cap',             // 戴著帽子的皮卡丘 (所有帽子系列)
+    '-blue-striped',    // 野蠻鱸魚 (藍條紋)
+    '-white-striped',   // 野蠻鱸魚 (白條紋)
+    '-resolute',        // 凱路迪歐 (覺悟的樣子)
+    '-busted',          // 謎擬Ｑ (現形樣子)
+    '-original',        // 瑪機雅娜 (500年前的顏色)
+    '-low-key',         // 毒電嬰 (低調形態)
+    '-hangry',          // 莫魯貝可 (空腹花紋)
+    '-dada',            // 薩戮德 (阿爸)
+    '-family-of-three', // 一家鼠 (三隻家庭)
+    '-blue-plumage',    // 怒鸚哥 (藍色羽毛)
+    '-yellow-plumage',  // 怒鸚哥 (黃色羽毛)
+    '-white-plumage',   // 怒鸚哥 (白色羽毛)
+    '-droopy',          // 米立龍 (下垂姿態)
+    '-stretchy',        // 米立龍 (平挺姿態)
+    '-three-segment',   // 土龍節節 (三節形態)
+    '-build',           // 故勒頓 (所有乘騎模式)
+    '-mode'             // 密勒頓 (所有乘騎模式)
 ];
 
 // Minior 專屬規則：只保留 minior-red-meteor（非戰鬥狀態代表），其餘全部剔除
@@ -48,11 +73,23 @@ function pruneData() {
             const rawData = fs.readFileSync(filePath, 'utf-8');
             const statsList = JSON.parse(rawData);
 
+            // 針對不同世代，動態增加要剔除的地區型態或特殊型態後綴
+            const genSpecificExcluded = [...EXCLUDED];
+            if (i < 7) {
+                genSpecificExcluded.push('-alola', '-totem'); // Gen 7 引入阿羅拉與霸主
+            }
+            if (i < 8) {
+                genSpecificExcluded.push('-galar'); // Gen 8 引入伽勒爾
+            }
+            if (i < 9) {
+                genSpecificExcluded.push('-hisui', '-paldea'); // Gen 8 (阿爾宙斯) 引入洗翠，Gen 9 引入帕底亞
+            }
+
             const originalLength = statsList.length;
             // 使用 includes 確保只要字串內包含該後綴就剔除
             // 另外：minior 只保留 minior-red-meteor 一筆
             const filteredList = statsList.filter(p =>
-                !EXCLUDED.some(ex => p.key.includes(ex)) && !isExcludedMinior(p.key)
+                !genSpecificExcluded.some(ex => p.key.includes(ex)) && !isExcludedMinior(p.key)
             );
 
             const removedCount = originalLength - filteredList.length;

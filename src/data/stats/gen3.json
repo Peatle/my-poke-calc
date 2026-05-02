@@ -247,19 +247,6 @@
     "system": "IV"
   },
   {
-    "id": 19,
-    "key": "rattata-alola",
-    "stats": {
-      "hp": 30,
-      "attack": 56,
-      "defense": 35,
-      "special-attack": 25,
-      "special-defense": 35,
-      "speed": 72
-    },
-    "system": "IV"
-  },
-  {
     "id": 20,
     "key": "raticate",
     "stats": {
@@ -269,32 +256,6 @@
       "special-attack": 50,
       "special-defense": 70,
       "speed": 97
-    },
-    "system": "IV"
-  },
-  {
-    "id": 20,
-    "key": "raticate-alola",
-    "stats": {
-      "hp": 75,
-      "attack": 71,
-      "defense": 70,
-      "special-attack": 40,
-      "special-defense": 80,
-      "speed": 77
-    },
-    "system": "IV"
-  },
-  {
-    "id": 20,
-    "key": "raticate-totem-alola",
-    "stats": {
-      "hp": 75,
-      "attack": 71,
-      "defense": 70,
-      "special-attack": 40,
-      "special-defense": 80,
-      "speed": 77
     },
     "system": "IV"
   },
@@ -364,201 +325,6 @@
     "system": "IV"
   },
   {
-    "id": 25,
-    "key": "pikachu-rock-star",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-belle",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-pop-star",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-phd",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-libre",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-cosplay",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-original-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-hoenn-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-sinnoh-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-unova-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-kalos-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-alola-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-partner-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-starter",
-    "stats": {
-      "hp": 45,
-      "attack": 80,
-      "defense": 50,
-      "special-attack": 75,
-      "special-defense": 60,
-      "speed": 120
-    },
-    "system": "IV"
-  },
-  {
-    "id": 25,
-    "key": "pikachu-world-cap",
-    "stats": {
-      "hp": 35,
-      "attack": 55,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 50,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
     "id": 26,
     "key": "raichu",
     "stats": {
@@ -568,19 +334,6 @@
       "special-attack": 90,
       "special-defense": 80,
       "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 26,
-    "key": "raichu-alola",
-    "stats": {
-      "hp": 60,
-      "attack": 85,
-      "defense": 50,
-      "special-attack": 95,
-      "special-defense": 85,
-      "speed": 110
     },
     "system": "IV"
   },
@@ -598,19 +351,6 @@
     "system": "IV"
   },
   {
-    "id": 27,
-    "key": "sandshrew-alola",
-    "stats": {
-      "hp": 50,
-      "attack": 75,
-      "defense": 90,
-      "special-attack": 10,
-      "special-defense": 35,
-      "speed": 40
-    },
-    "system": "IV"
-  },
-  {
     "id": 28,
     "key": "sandslash",
     "stats": {
@@ -619,19 +359,6 @@
       "defense": 110,
       "special-attack": 45,
       "special-defense": 55,
-      "speed": 65
-    },
-    "system": "IV"
-  },
-  {
-    "id": 28,
-    "key": "sandslash-alola",
-    "stats": {
-      "hp": 75,
-      "attack": 100,
-      "defense": 120,
-      "special-attack": 25,
-      "special-defense": 65,
       "speed": 65
     },
     "system": "IV"
@@ -754,19 +481,6 @@
     "system": "IV"
   },
   {
-    "id": 37,
-    "key": "vulpix-alola",
-    "stats": {
-      "hp": 38,
-      "attack": 41,
-      "defense": 40,
-      "special-attack": 50,
-      "special-defense": 65,
-      "speed": 65
-    },
-    "system": "IV"
-  },
-  {
     "id": 38,
     "key": "ninetales",
     "stats": {
@@ -776,19 +490,6 @@
       "special-attack": 81,
       "special-defense": 100,
       "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 38,
-    "key": "ninetales-alola",
-    "stats": {
-      "hp": 73,
-      "attack": 67,
-      "defense": 75,
-      "special-attack": 81,
-      "special-defense": 100,
-      "speed": 109
     },
     "system": "IV"
   },
@@ -949,19 +650,6 @@
     "system": "IV"
   },
   {
-    "id": 50,
-    "key": "diglett-alola",
-    "stats": {
-      "hp": 10,
-      "attack": 55,
-      "defense": 30,
-      "special-attack": 35,
-      "special-defense": 45,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
     "id": 51,
     "key": "dugtrio",
     "stats": {
@@ -971,19 +659,6 @@
       "special-attack": 50,
       "special-defense": 70,
       "speed": 120
-    },
-    "system": "IV"
-  },
-  {
-    "id": 51,
-    "key": "dugtrio-alola",
-    "stats": {
-      "hp": 35,
-      "attack": 100,
-      "defense": 60,
-      "special-attack": 50,
-      "special-defense": 70,
-      "speed": 110
     },
     "system": "IV"
   },
@@ -1001,32 +676,6 @@
     "system": "IV"
   },
   {
-    "id": 52,
-    "key": "meowth-alola",
-    "stats": {
-      "hp": 40,
-      "attack": 35,
-      "defense": 35,
-      "special-attack": 50,
-      "special-defense": 40,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 52,
-    "key": "meowth-galar",
-    "stats": {
-      "hp": 50,
-      "attack": 65,
-      "defense": 55,
-      "special-attack": 40,
-      "special-defense": 40,
-      "speed": 40
-    },
-    "system": "IV"
-  },
-  {
     "id": 53,
     "key": "persian",
     "stats": {
@@ -1034,19 +683,6 @@
       "attack": 70,
       "defense": 60,
       "special-attack": 65,
-      "special-defense": 65,
-      "speed": 115
-    },
-    "system": "IV"
-  },
-  {
-    "id": 53,
-    "key": "persian-alola",
-    "stats": {
-      "hp": 65,
-      "attack": 60,
-      "defense": 60,
-      "special-attack": 75,
       "special-defense": 65,
       "speed": 115
     },
@@ -1118,19 +754,6 @@
     "system": "IV"
   },
   {
-    "id": 58,
-    "key": "growlithe-hisui",
-    "stats": {
-      "hp": 60,
-      "attack": 75,
-      "defense": 45,
-      "special-attack": 65,
-      "special-defense": 50,
-      "speed": 55
-    },
-    "system": "IV"
-  },
-  {
     "id": 59,
     "key": "arcanine",
     "stats": {
@@ -1140,19 +763,6 @@
       "special-attack": 100,
       "special-defense": 80,
       "speed": 95
-    },
-    "system": "IV"
-  },
-  {
-    "id": 59,
-    "key": "arcanine-hisui",
-    "stats": {
-      "hp": 95,
-      "attack": 115,
-      "defense": 80,
-      "special-attack": 95,
-      "special-defense": 80,
-      "speed": 90
     },
     "system": "IV"
   },
@@ -1352,34 +962,8 @@
     "system": "IV"
   },
   {
-    "id": 74,
-    "key": "geodude-alola",
-    "stats": {
-      "hp": 40,
-      "attack": 80,
-      "defense": 100,
-      "special-attack": 30,
-      "special-defense": 30,
-      "speed": 20
-    },
-    "system": "IV"
-  },
-  {
     "id": 75,
     "key": "graveler",
-    "stats": {
-      "hp": 55,
-      "attack": 95,
-      "defense": 115,
-      "special-attack": 45,
-      "special-defense": 45,
-      "speed": 35
-    },
-    "system": "IV"
-  },
-  {
-    "id": 75,
-    "key": "graveler-alola",
     "stats": {
       "hp": 55,
       "attack": 95,
@@ -1404,34 +988,8 @@
     "system": "IV"
   },
   {
-    "id": 76,
-    "key": "golem-alola",
-    "stats": {
-      "hp": 80,
-      "attack": 120,
-      "defense": 130,
-      "special-attack": 55,
-      "special-defense": 65,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
     "id": 77,
     "key": "ponyta",
-    "stats": {
-      "hp": 50,
-      "attack": 85,
-      "defense": 55,
-      "special-attack": 65,
-      "special-defense": 65,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 77,
-    "key": "ponyta-galar",
     "stats": {
       "hp": 50,
       "attack": 85,
@@ -1456,34 +1014,8 @@
     "system": "IV"
   },
   {
-    "id": 78,
-    "key": "rapidash-galar",
-    "stats": {
-      "hp": 65,
-      "attack": 100,
-      "defense": 70,
-      "special-attack": 80,
-      "special-defense": 80,
-      "speed": 105
-    },
-    "system": "IV"
-  },
-  {
     "id": 79,
     "key": "slowpoke",
-    "stats": {
-      "hp": 90,
-      "attack": 65,
-      "defense": 65,
-      "special-attack": 40,
-      "special-defense": 40,
-      "speed": 15
-    },
-    "system": "IV"
-  },
-  {
-    "id": 79,
-    "key": "slowpoke-galar",
     "stats": {
       "hp": 90,
       "attack": 65,
@@ -1503,19 +1035,6 @@
       "defense": 110,
       "special-attack": 100,
       "special-defense": 80,
-      "speed": 30
-    },
-    "system": "IV"
-  },
-  {
-    "id": 80,
-    "key": "slowbro-galar",
-    "stats": {
-      "hp": 95,
-      "attack": 100,
-      "defense": 95,
-      "special-attack": 100,
-      "special-defense": 70,
       "speed": 30
     },
     "system": "IV"
@@ -1556,19 +1075,6 @@
       "special-attack": 58,
       "special-defense": 62,
       "speed": 60
-    },
-    "system": "IV"
-  },
-  {
-    "id": 83,
-    "key": "farfetchd-galar",
-    "stats": {
-      "hp": 52,
-      "attack": 95,
-      "defense": 55,
-      "special-attack": 58,
-      "special-defense": 62,
-      "speed": 55
     },
     "system": "IV"
   },
@@ -1638,34 +1144,8 @@
     "system": "IV"
   },
   {
-    "id": 88,
-    "key": "grimer-alola",
-    "stats": {
-      "hp": 80,
-      "attack": 80,
-      "defense": 50,
-      "special-attack": 40,
-      "special-defense": 50,
-      "speed": 25
-    },
-    "system": "IV"
-  },
-  {
     "id": 89,
     "key": "muk",
-    "stats": {
-      "hp": 105,
-      "attack": 105,
-      "defense": 75,
-      "special-attack": 65,
-      "special-defense": 100,
-      "speed": 50
-    },
-    "system": "IV"
-  },
-  {
-    "id": 89,
-    "key": "muk-alola",
     "stats": {
       "hp": 105,
       "attack": 105,
@@ -1820,19 +1300,6 @@
     "system": "IV"
   },
   {
-    "id": 100,
-    "key": "voltorb-hisui",
-    "stats": {
-      "hp": 40,
-      "attack": 30,
-      "defense": 50,
-      "special-attack": 55,
-      "special-defense": 55,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
     "id": 101,
     "key": "electrode",
     "stats": {
@@ -1842,19 +1309,6 @@
       "special-attack": 80,
       "special-defense": 80,
       "speed": 140
-    },
-    "system": "IV"
-  },
-  {
-    "id": 101,
-    "key": "electrode-hisui",
-    "stats": {
-      "hp": 60,
-      "attack": 50,
-      "defense": 70,
-      "special-attack": 80,
-      "special-defense": 80,
-      "speed": 150
     },
     "system": "IV"
   },
@@ -1885,19 +1339,6 @@
     "system": "IV"
   },
   {
-    "id": 103,
-    "key": "exeggutor-alola",
-    "stats": {
-      "hp": 95,
-      "attack": 105,
-      "defense": 85,
-      "special-attack": 125,
-      "special-defense": 75,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
     "id": 104,
     "key": "cubone",
     "stats": {
@@ -1913,32 +1354,6 @@
   {
     "id": 105,
     "key": "marowak",
-    "stats": {
-      "hp": 60,
-      "attack": 80,
-      "defense": 110,
-      "special-attack": 50,
-      "special-defense": 80,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
-    "id": 105,
-    "key": "marowak-alola",
-    "stats": {
-      "hp": 60,
-      "attack": 80,
-      "defense": 110,
-      "special-attack": 50,
-      "special-defense": 80,
-      "speed": 45
-    },
-    "system": "IV"
-  },
-  {
-    "id": 105,
-    "key": "marowak-totem",
     "stats": {
       "hp": 60,
       "attack": 80,
@@ -2004,19 +1419,6 @@
   {
     "id": 110,
     "key": "weezing",
-    "stats": {
-      "hp": 65,
-      "attack": 90,
-      "defense": 120,
-      "special-attack": 85,
-      "special-defense": 70,
-      "speed": 60
-    },
-    "system": "IV"
-  },
-  {
-    "id": 110,
-    "key": "weezing-galar",
     "stats": {
       "hp": 65,
       "attack": 90,
@@ -2184,19 +1586,6 @@
     "system": "IV"
   },
   {
-    "id": 122,
-    "key": "mr-mime-galar",
-    "stats": {
-      "hp": 50,
-      "attack": 65,
-      "defense": 65,
-      "special-attack": 90,
-      "special-defense": 90,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
     "id": 123,
     "key": "scyther",
     "stats": {
@@ -2275,45 +1664,6 @@
     "system": "IV"
   },
   {
-    "id": 128,
-    "key": "tauros-paldea-combat-breed",
-    "stats": {
-      "hp": 75,
-      "attack": 110,
-      "defense": 105,
-      "special-attack": 30,
-      "special-defense": 70,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 128,
-    "key": "tauros-paldea-blaze-breed",
-    "stats": {
-      "hp": 75,
-      "attack": 110,
-      "defense": 105,
-      "special-attack": 30,
-      "special-defense": 70,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 128,
-    "key": "tauros-paldea-aqua-breed",
-    "stats": {
-      "hp": 75,
-      "attack": 110,
-      "defense": 105,
-      "special-attack": 30,
-      "special-defense": 70,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
     "id": 129,
     "key": "magikarp",
     "stats": {
@@ -2375,19 +1725,6 @@
       "special-attack": 45,
       "special-defense": 65,
       "speed": 55
-    },
-    "system": "IV"
-  },
-  {
-    "id": 133,
-    "key": "eevee-starter",
-    "stats": {
-      "hp": 65,
-      "attack": 75,
-      "defense": 70,
-      "special-attack": 65,
-      "special-defense": 85,
-      "speed": 75
     },
     "system": "IV"
   },
@@ -2535,19 +1872,6 @@
     "system": "IV"
   },
   {
-    "id": 144,
-    "key": "articuno-galar",
-    "stats": {
-      "hp": 90,
-      "attack": 85,
-      "defense": 85,
-      "special-attack": 125,
-      "special-defense": 100,
-      "speed": 95
-    },
-    "system": "IV"
-  },
-  {
     "id": 145,
     "key": "zapdos",
     "stats": {
@@ -2555,19 +1879,6 @@
       "attack": 90,
       "defense": 85,
       "special-attack": 125,
-      "special-defense": 90,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 145,
-    "key": "zapdos-galar",
-    "stats": {
-      "hp": 90,
-      "attack": 125,
-      "defense": 90,
-      "special-attack": 85,
       "special-defense": 90,
       "speed": 100
     },
@@ -2582,19 +1893,6 @@
       "defense": 90,
       "special-attack": 125,
       "special-defense": 85,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
-    "id": 146,
-    "key": "moltres-galar",
-    "stats": {
-      "hp": 90,
-      "attack": 85,
-      "defense": 90,
-      "special-attack": 100,
-      "special-defense": 125,
       "speed": 90
     },
     "system": "IV"
@@ -2739,19 +2037,6 @@
       "special-attack": 109,
       "special-defense": 85,
       "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 157,
-    "key": "typhlosion-hisui",
-    "stats": {
-      "hp": 73,
-      "attack": 84,
-      "defense": 78,
-      "special-attack": 119,
-      "special-defense": 85,
-      "speed": 95
     },
     "system": "IV"
   },
@@ -3237,19 +2522,6 @@
     "system": "IV"
   },
   {
-    "id": 194,
-    "key": "wooper-paldea",
-    "stats": {
-      "hp": 55,
-      "attack": 45,
-      "defense": 45,
-      "special-attack": 25,
-      "special-defense": 25,
-      "speed": 15
-    },
-    "system": "IV"
-  },
-  {
     "id": 195,
     "key": "quagsire",
     "stats": {
@@ -3309,19 +2581,6 @@
       "attack": 75,
       "defense": 80,
       "special-attack": 100,
-      "special-defense": 110,
-      "speed": 30
-    },
-    "system": "IV"
-  },
-  {
-    "id": 199,
-    "key": "slowking-galar",
-    "stats": {
-      "hp": 95,
-      "attack": 65,
-      "defense": 80,
-      "special-attack": 110,
       "special-defense": 110,
       "speed": 30
     },
@@ -3484,19 +2743,6 @@
     "system": "IV"
   },
   {
-    "id": 211,
-    "key": "qwilfish-hisui",
-    "stats": {
-      "hp": 65,
-      "attack": 95,
-      "defense": 85,
-      "special-attack": 55,
-      "special-defense": 55,
-      "speed": 85
-    },
-    "system": "IV"
-  },
-  {
     "id": 212,
     "key": "scizor",
     "stats": {
@@ -3538,19 +2784,6 @@
   {
     "id": 215,
     "key": "sneasel",
-    "stats": {
-      "hp": 55,
-      "attack": 95,
-      "defense": 55,
-      "special-attack": 35,
-      "special-defense": 75,
-      "speed": 115
-    },
-    "system": "IV"
-  },
-  {
-    "id": 215,
-    "key": "sneasel-hisui",
     "stats": {
       "hp": 55,
       "attack": 95,
@@ -3649,19 +2882,6 @@
       "special-attack": 65,
       "special-defense": 85,
       "speed": 35
-    },
-    "system": "IV"
-  },
-  {
-    "id": 222,
-    "key": "corsola-galar",
-    "stats": {
-      "hp": 60,
-      "attack": 55,
-      "defense": 100,
-      "special-attack": 65,
-      "special-defense": 100,
-      "speed": 30
     },
     "system": "IV"
   },
@@ -4199,34 +3419,8 @@
     "system": "IV"
   },
   {
-    "id": 263,
-    "key": "zigzagoon-galar",
-    "stats": {
-      "hp": 38,
-      "attack": 30,
-      "defense": 41,
-      "special-attack": 30,
-      "special-defense": 41,
-      "speed": 60
-    },
-    "system": "IV"
-  },
-  {
     "id": 264,
     "key": "linoone",
-    "stats": {
-      "hp": 78,
-      "attack": 70,
-      "defense": 61,
-      "special-attack": 50,
-      "special-defense": 61,
-      "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 264,
-    "key": "linoone-galar",
     "stats": {
       "hp": 78,
       "attack": 70,

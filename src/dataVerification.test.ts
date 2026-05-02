@@ -232,6 +232,82 @@ describe('寶可夢數據完整性驗證', () => {
     });
 
     // -----------------------------------------------------------------------
+    // 地區型態與特殊型態世代排除驗證
+    // -----------------------------------------------------------------------
+    describe('地區型態與特殊型態世代排除驗證', () => {
+        it('第一至第六世代不應包含阿羅拉 (-alola) 或霸主 (-totem) 型態', () => {
+            const hasAlolaOrTotem = (stats: any[]) => stats.some(p => p.key.includes('-alola') || p.key.includes('-totem'));
+            expect(hasAlolaOrTotem(gen1Stats)).toBe(false);
+            expect(hasAlolaOrTotem(gen2Stats)).toBe(false);
+            expect(hasAlolaOrTotem(gen6Stats)).toBe(false);
+        });
+
+        it('第七世代應包含阿羅拉型態', () => {
+            const hasAlola = gen7Stats.some(p => p.key.includes('-alola'));
+            expect(hasAlola).toBe(true);
+        });
+
+        it('第一至第七世代不應包含伽勒爾 (-galar) 型態', () => {
+            const hasGalar = (stats: any[]) => stats.some(p => p.key.includes('-galar'));
+            expect(hasGalar(gen1Stats)).toBe(false);
+            expect(hasGalar(gen7Stats)).toBe(false);
+        });
+
+        it('第八世代應包含伽勒爾型態', () => {
+            const hasGalar = gen8Stats.some(p => p.key.includes('-galar'));
+            expect(hasGalar).toBe(true);
+        });
+
+        it('第一至第八世代不應包含洗翠 (-hisui) 或帕底亞 (-paldea) 型態', () => {
+            const hasHisuiOrPaldea = (stats: any[]) => stats.some(p => p.key.includes('-hisui') || p.key.includes('-paldea'));
+            expect(hasHisuiOrPaldea(gen1Stats)).toBe(false);
+            expect(hasHisuiOrPaldea(gen8Stats)).toBe(false);
+        });
+
+        it('第九世代應包含洗翠與帕底亞型態', () => {
+            const hasHisuiOrPaldea = gen9Stats.some(p => p.key.includes('-hisui') || p.key.includes('-paldea'));
+            expect(hasHisuiOrPaldea).toBe(true);
+        });
+    });
+
+    // -----------------------------------------------------------------------
+    // 特殊遊戲版本專屬型態驗證
+    // -----------------------------------------------------------------------
+    describe('特殊遊戲版本專屬型態驗證', () => {
+        it('搭檔皮卡丘 (pikachu-starter) 與搭檔伊布 (eevee-starter) 應被全部剔除', () => {
+            // 由於 Let\'s Go 搭檔型態個體值固定且不可交換，不應出現在計算器中
+            expect(gen1Stats.some(p => p.key === 'pikachu-starter')).toBe(false);
+            expect(gen1Stats.some(p => p.key === 'eevee-starter')).toBe(false);
+            expect(gen7Stats.some(p => p.key === 'pikachu-starter')).toBe(false);
+            expect(gen7Stats.some(p => p.key === 'eevee-starter')).toBe(false);
+            expect(gen9Stats.some(p => p.key === 'pikachu-starter')).toBe(false);
+            expect(gen9Stats.some(p => p.key === 'eevee-starter')).toBe(false);
+        });
+    });
+
+    // -----------------------------------------------------------------------
+    // 純外觀變化與重複型態排除驗證
+    // -----------------------------------------------------------------------
+    describe('純外觀變化與重複型態排除驗證', () => {
+        it('換裝皮卡丘與帽子皮卡丘應被全部剔除', () => {
+            const pikachuForms = ['-rock-star', '-belle', '-pop-star', '-phd', '-libre', '-cosplay', '-cap'];
+            const hasCosmeticPikachu = gen9Stats.some(p => pikachuForms.some(suffix => p.key.includes(suffix)));
+            expect(hasCosmeticPikachu).toBe(false);
+        });
+
+        it('其他純外觀變化的寶可夢型態應被全部剔除', () => {
+            const cosmeticSuffixes = [
+                '-blue-striped', '-white-striped', '-resolute', '-busted',
+                '-original', '-low-key', '-hangry', '-dada', '-family-of-three',
+                '-blue-plumage', '-yellow-plumage', '-white-plumage',
+                '-droopy', '-stretchy', '-three-segment', '-build', '-mode'
+            ];
+            const hasOtherCosmetics = gen9Stats.some(p => cosmeticSuffixes.some(suffix => p.key.includes(suffix)));
+            expect(hasOtherCosmetics).toBe(false);
+        });
+    });
+
+    // -----------------------------------------------------------------------
     // 原有測試保留
     // -----------------------------------------------------------------------
     describe('第六世代 (Gen 6) 數值變遷驗證', () => {

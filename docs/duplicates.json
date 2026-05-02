@@ -1,0 +1,187 @@
+{
+  "rattata": [
+    "rattata-alola"
+  ],
+  "pikachu": [
+    "pikachu-rock-star",
+    "pikachu-belle",
+    "pikachu-pop-star",
+    "pikachu-phd",
+    "pikachu-libre",
+    "pikachu-cosplay",
+    "pikachu-original-cap",
+    "pikachu-hoenn-cap",
+    "pikachu-sinnoh-cap",
+    "pikachu-unova-cap",
+    "pikachu-kalos-cap",
+    "pikachu-alola-cap",
+    "pikachu-partner-cap",
+    "pikachu-world-cap"
+  ],
+  "vulpix": [
+    "vulpix-alola"
+  ],
+  "geodude": [
+    "geodude-alola"
+  ],
+  "graveler": [
+    "graveler-alola"
+  ],
+  "golem": [
+    "golem-alola"
+  ],
+  "ponyta": [
+    "ponyta-galar"
+  ],
+  "rapidash": [
+    "rapidash-galar"
+  ],
+  "slowpoke": [
+    "slowpoke-galar"
+  ],
+  "grimer": [
+    "grimer-alola"
+  ],
+  "muk": [
+    "muk-alola"
+  ],
+  "voltorb": [
+    "voltorb-hisui"
+  ],
+  "electrode": [
+    "electrode-hisui"
+  ],
+  "marowak": [
+    "marowak-alola",
+    "marowak-totem"
+  ],
+  "weezing": [
+    "weezing-galar"
+  ],
+  "wooper": [
+    "wooper-paldea"
+  ],
+  "qwilfish": [
+    "qwilfish-hisui"
+  ],
+  "sneasel": [
+    "sneasel-hisui"
+  ],
+  "zigzagoon": [
+    "zigzagoon-galar"
+  ],
+  "linoone": [
+    "linoone-galar"
+  ],
+  "castform": [
+    "castform-sunny",
+    "castform-rainy",
+    "castform-snowy"
+  ],
+  "basculin-red-striped": [
+    "basculin-blue-striped",
+    "basculin-white-striped"
+  ],
+  "darumaka": [
+    "darumaka-galar"
+  ],
+  "darmanitan-standard": [
+    "darmanitan-galar-standard"
+  ],
+  "keldeo-ordinary": [
+    "keldeo-resolute"
+  ],
+  "greninja": [
+    "greninja-battle-bond"
+  ],
+  "meowstic-male": [
+    "meowstic-female"
+  ],
+  "zygarde-50": [
+    "zygarde-50-power-construct"
+  ],
+  "gumshoos": [
+    "gumshoos-totem"
+  ],
+  "vikavolt": [
+    "vikavolt-totem"
+  ],
+  "oricorio-baile": [
+    "oricorio-pom-pom",
+    "oricorio-pau",
+    "oricorio-sensu"
+  ],
+  "ribombee": [
+    "ribombee-totem"
+  ],
+  "rockruff": [
+    "rockruff-own-tempo"
+  ],
+  "araquanid": [
+    "araquanid-totem"
+  ],
+  "lurantis": [
+    "lurantis-totem"
+  ],
+  "salazzle": [
+    "salazzle-totem"
+  ],
+  "togedemaru": [
+    "togedemaru-totem"
+  ],
+  "mimikyu-disguised": [
+    "mimikyu-busted",
+    "mimikyu-totem-disguised",
+    "mimikyu-totem-busted"
+  ],
+  "kommo-o": [
+    "kommo-o-totem"
+  ],
+  "magearna": [
+    "magearna-original"
+  ],
+  "toxtricity-amped": [
+    "toxtricity-low-key"
+  ],
+  "morpeko-full-belly": [
+    "morpeko-hangry"
+  ],
+  "urshifu-single-strike": [
+    "urshifu-rapid-strike"
+  ],
+  "zarude": [
+    "zarude-dada"
+  ],
+  "maushold-family-of-four": [
+    "maushold-family-of-three"
+  ],
+  "squawkabilly-green-plumage": [
+    "squawkabilly-blue-plumage",
+    "squawkabilly-yellow-plumage",
+    "squawkabilly-white-plumage"
+  ],
+  "tatsugiri-curly": [
+    "tatsugiri-droopy",
+    "tatsugiri-stretchy"
+  ],
+  "dudunsparce-two-segment": [
+    "dudunsparce-three-segment"
+  ],
+  "koraidon": [
+    "koraidon-limited-build",
+    "koraidon-sprinting-build",
+    "koraidon-swimming-build",
+    "koraidon-gliding-build"
+  ],
+  "miraidon": [
+    "miraidon-low-power-mode",
+    "miraidon-drive-mode",
+    "miraidon-aquatic-mode",
+    "miraidon-glide-mode"
+  ],
+  "ogerpon": [
+    "ogerpon-wellspring-mask",
+    "ogerpon-hearthflame-mask",
+    "ogerpon-cornerstone-mask"
+  ]
+}
