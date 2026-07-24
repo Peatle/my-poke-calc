@@ -1,0 +1,183 @@
+// @vitest-environment jsdom
+
+import '@testing-library/jest-dom/vitest'
+import { createEvent, fireEvent, render, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
+import App from './App'
+
+async function selectPokemon(query: string, optionName: RegExp) {
+  const user = userEvent.setup()
+  const searchInput = screen.getByRole('combobox', { name: '寶可夢' })
+  await user.clear(searchInput)
+  await user.type(searchInput, query)
+  await user.click(screen.getByRole('option', { name: optionName }))
+  return user
+}
+
+describe('Gen 9 IV 計算器 UI', () => {
+  it('初始顯示預設等級、認真性格與圖鑑排序建議', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    expect(screen.getByRole('spinbutton', { name: '等級' })).toHaveValue(50)
+    expect(screen.getByRole('combobox', { name: '性格' })).toHaveValue(
+      'serious',
+    )
+
+    await user.click(screen.getByRole('combobox', { name: '寶可夢' }))
+    const options = screen.getAllByRole('option')
+    expect(options[0]).toHaveTextContent('#0001')
+    expect(options[0]).toHaveTextContent('妙蛙種子')
+  })
+
+  it('支援英文搜尋與鍵盤 Enter 選取', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    const searchInput = screen.getByRole('combobox', { name: '寶可夢' })
+    await user.type(searchInput, 'bulbasaur')
+    await user.keyboard('{Enter}')
+
+    expect(screen.getByText('#0001')).toBeInTheDocument()
+    expect(screen.getByText('妙蛙種子')).toBeInTheDocument()
+  })
+
+  it('支援帶前導零的圖鑑編號搜尋', async () => {
+    render(<App />)
+    await selectPokemon('#0025', /#0025.*皮卡丘.*Pikachu/i)
+
+    expect(screen.getByText('#0025')).toBeInTheDocument()
+    expect(screen.getByText('皮卡丘')).toBeInTheDocument()
+  })
+
+  it('可計算單一 IV 31 並顯示最棒', async () => {
+    render(<App />)
+    const user = await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+
+    const levelInput = screen.getByRole('spinbutton', { name: '等級' })
+    await user.clear(levelInput)
+    await user.type(levelInput, '100')
+    await user.type(screen.getByLabelText('攻擊實際能力值'), '134')
+
+    expect(screen.getByText('最棒')).toBeInTheDocument()
+    expect(screen.getByText('31')).toBeInTheDocument()
+  })
+
+  it('套用完整性格並顯示無符合結果', async () => {
+    render(<App />)
+    const user = await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+
+    await user.selectOptions(screen.getByRole('combobox', { name: '性格' }), [
+      'adamant',
+    ])
+    expect(screen.getByText('↑ 1.1')).toBeInTheDocument()
+    expect(screen.getByText('↓ 0.9')).toBeInTheDocument()
+
+    await user.type(screen.getByLabelText('攻擊實際能力值'), '999')
+    expect(
+      screen.getByText('無符合結果，請檢查輸入'),
+    ).toBeInTheDocument()
+  })
+
+  it('EV 總和超過 510 時停止計算並顯示提示', async () => {
+    render(<App />)
+    const user = await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+
+    for (const label of ['HPEV', '攻擊EV', '防禦EV']) {
+      const input = screen.getByLabelText(label)
+      await user.clear(input)
+      await user.type(input, '252')
+    }
+    await user.type(screen.getByLabelText('HP實際能力值'), '120')
+
+    expect(screen.getByText('EV 合計 756 / 510')).toBeInTheDocument()
+    expect(screen.getByText('EV 總和超過 510')).toBeInTheDocument()
+  })
+
+  it('可用無外框的加減控制調整數值並遵守上下限', async () => {
+    render(<App />)
+    const user = await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+    const attackEv = screen.getByLabelText('攻擊EV')
+
+    await user.click(screen.getByRole('button', { name: '攻擊EV減少' }))
+    expect(attackEv).toHaveValue(0)
+
+    await user.click(screen.getByRole('button', { name: '攻擊EV增加' }))
+    expect(attackEv).toHaveValue(1)
+
+    await user.clear(attackEv)
+    await user.type(attackEv, '252')
+    await user.click(screen.getByRole('button', { name: '攻擊EV增加' }))
+    expect(attackEv).toHaveValue(252)
+  })
+
+  it('只有輸入框取得焦點時，滾輪才會調整數值', async () => {
+    const parentWheelHandler = vi.fn()
+    render(
+      <div onWheel={parentWheelHandler}>
+        <App />
+      </div>,
+    )
+    await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/)
+
+    const attackEv = screen.getByLabelText('攻擊EV')
+
+    const unfocusedWheel = createEvent.wheel(attackEv, {
+      cancelable: true,
+      deltaY: -100,
+    })
+    fireEvent(attackEv, unfocusedWheel)
+    expect(attackEv).toHaveValue(0)
+    expect(unfocusedWheel.defaultPrevented).toBe(false)
+    expect(parentWheelHandler).toHaveBeenCalledTimes(1)
+
+    attackEv.focus()
+    const focusedWheel = createEvent.wheel(attackEv, {
+      cancelable: true,
+      deltaY: -100,
+    })
+    fireEvent(attackEv, focusedWheel)
+    expect(attackEv).toHaveValue(1)
+    expect(focusedWheel.defaultPrevented).toBe(true)
+    expect(parentWheelHandler).toHaveBeenCalledTimes(1)
+
+    fireEvent.wheel(attackEv, { deltaY: 100 })
+    expect(attackEv).toHaveValue(0)
+    expect(parentWheelHandler).toHaveBeenCalledTimes(1)
+
+    attackEv.blur()
+    fireEvent.wheel(attackEv, { deltaY: -100 })
+    expect(attackEv).toHaveValue(0)
+    expect(parentWheelHandler).toHaveBeenCalledTimes(2)
+  })
+
+  it('拒絕不合法的等級與單項 EV', async () => {
+    render(<App />)
+    const user = await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+
+    const levelInput = screen.getByRole('spinbutton', { name: '等級' })
+    await user.clear(levelInput)
+    await user.type(levelInput, '101')
+    expect(screen.getByText('請輸入 1–100 的整數')).toBeInTheDocument()
+
+    await user.clear(levelInput)
+    await user.type(levelInput, '50')
+    const attackEv = screen.getByLabelText('攻擊EV')
+    await user.clear(attackEv)
+    await user.type(attackEv, '253')
+    await user.type(screen.getByLabelText('攻擊實際能力值'), '70')
+
+    expect(screen.getByText('EV 須為 0–252 整數')).toBeInTheDocument()
+  })
+
+  it('脫殼忍者 HP 顯示固定規則，其他能力仍可輸入', async () => {
+    render(<App />)
+    await selectPokemon('292', /#0292.*脫殼忍者.*Shedinja/i)
+
+    expect(screen.getByText('HP 固定為 1')).toBeInTheDocument()
+    expect(screen.getByText('無法逆推 IV')).toBeInTheDocument()
+    expect(screen.getByLabelText('HP實際能力值')).toBeDisabled()
+    expect(screen.getByLabelText('攻擊實際能力值')).toBeEnabled()
+  })
+})

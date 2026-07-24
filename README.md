@@ -1,77 +1,63 @@
-# React + TypeScript + Vite
+# My Poke Calc
 
-## 專案文件
+繁體中文的寶可夢個體值計算器。目前第一版介面使用第九世代種族值與現代 IV 規則，可依全國圖鑑編號、繁中名稱或英文名稱搜尋寶可夢，並根據等級、性格、實際能力值與 EV 逆推出 IV 範圍。
 
-- [IV 計算引擎：支援範圍與目前限制](docs/iv-calculator.md)
+## 功能
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- 依全國圖鑑編號排序，支援 `25`、`025`、`#0025` 等編號搜尋
+- 支援繁中、英文與內部 key 搜尋
+- 收錄 25 種性格及六項能力倍率
+- 一次計算 HP、攻擊、防禦、特攻、特防與速度
+- 顯示 IV 單值、範圍、滿值「最棒」及無符合結果
+- 驗證等級、單項 EV 與 EV 總和
+- 特別處理脫殼忍者固定 HP 規則
+- 手機與桌面響應式介面
 
-Currently, two official plugins are available:
+## 開發環境
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js 24
+- React 19
+- Vite 6
+- TypeScript 6
+- Tailwind CSS 3
+- Vitest 3
 
-## React Compiler
+## 安裝與執行
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Vite 啟動後會在終端機顯示本機網址，通常為：
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+http://localhost:5173/my-poke-calc/
 ```
+
+## 驗證指令
+
+```bash
+# 執行全部測試
+npm test -- --run
+
+# ESLint
+npm run lint
+
+# TypeScript 與正式版建置
+npm run build
+```
+
+## 資料更新
+
+```bash
+npm run data:update
+```
+
+這會重新抓取名稱與種族值資料，再執行型態清理。資料來源為 [PokeAPI](https://pokeapi.co/)。
+
+## 目前範圍
+
+第一版 UI 只使用 `gen9.json` 與 Gen 3–9 的現代 IV 公式。Gen 1 DV 引擎已有獨立測試，但尚未接入畫面；Gen 2 DV、未知 EV、極限特訓、歷史紀錄、多語系切換與 PWA 留待後續版本。
+
+更多細節請參閱 [IV 計算引擎：支援範圍與限制](docs/iv-calculator.md)。
