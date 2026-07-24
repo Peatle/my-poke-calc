@@ -236,7 +236,8 @@ describe('寶可夢數據完整性驗證', () => {
     // -----------------------------------------------------------------------
     describe('地區型態與特殊型態世代排除驗證', () => {
         it('第一至第六世代不應包含阿羅拉 (-alola) 或霸主 (-totem) 型態', () => {
-            const hasAlolaOrTotem = (stats: any[]) => stats.some(p => p.key.includes('-alola') || p.key.includes('-totem'));
+            const hasAlolaOrTotem = (stats: ReadonlyArray<{ key: string }>) =>
+                stats.some(p => p.key.includes('-alola') || p.key.includes('-totem'));
             expect(hasAlolaOrTotem(gen1Stats)).toBe(false);
             expect(hasAlolaOrTotem(gen2Stats)).toBe(false);
             expect(hasAlolaOrTotem(gen6Stats)).toBe(false);
@@ -248,7 +249,8 @@ describe('寶可夢數據完整性驗證', () => {
         });
 
         it('第一至第七世代不應包含伽勒爾 (-galar) 型態', () => {
-            const hasGalar = (stats: any[]) => stats.some(p => p.key.includes('-galar'));
+            const hasGalar = (stats: ReadonlyArray<{ key: string }>) =>
+                stats.some(p => p.key.includes('-galar'));
             expect(hasGalar(gen1Stats)).toBe(false);
             expect(hasGalar(gen7Stats)).toBe(false);
         });
@@ -259,7 +261,8 @@ describe('寶可夢數據完整性驗證', () => {
         });
 
         it('第一至第八世代不應包含洗翠 (-hisui) 或帕底亞 (-paldea) 型態', () => {
-            const hasHisuiOrPaldea = (stats: any[]) => stats.some(p => p.key.includes('-hisui') || p.key.includes('-paldea'));
+            const hasHisuiOrPaldea = (stats: ReadonlyArray<{ key: string }>) =>
+                stats.some(p => p.key.includes('-hisui') || p.key.includes('-paldea'));
             expect(hasHisuiOrPaldea(gen1Stats)).toBe(false);
             expect(hasHisuiOrPaldea(gen8Stats)).toBe(false);
         });
