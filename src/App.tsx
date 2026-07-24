@@ -157,9 +157,6 @@ function App() {
             <h1 className="page-title text-3xl font-black tracking-tight sm:text-5xl">
               寶可夢 IV 計算器
             </h1>
-            <p className="page-copy mt-3 max-w-2xl text-sm leading-6 sm:text-base">
-              輸入遊戲中的能力值、努力值與性格，即時逆推出可能的個體值範圍。
-            </p>
           </div>
           <button
             className="reset-button self-start rounded-xl px-4 py-2 text-sm font-semibold transition sm:self-auto"
