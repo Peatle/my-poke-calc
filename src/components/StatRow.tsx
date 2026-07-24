@@ -47,7 +47,7 @@ function ResultDisplay({ result }: { result: StatResult }) {
 
   if (result.kind === 'shedinja') {
     return (
-      <span className="text-xs leading-5 text-amber-300">
+      <span className="text-base leading-6 text-amber-300">
         <span className="block">HP 固定為 1</span>
         <span className="block">無法逆推 IV</span>
       </span>
@@ -55,7 +55,7 @@ function ResultDisplay({ result }: { result: StatResult }) {
   }
 
   if (result.kind === 'error') {
-    return <span className="text-xs leading-5 text-red-300">{result.message}</span>
+    return <span className="text-base leading-6 text-red-300">{result.message}</span>
   }
 
   const isPerfect = result.min === 31 && result.max === 31
@@ -64,12 +64,12 @@ function ResultDisplay({ result }: { result: StatResult }) {
     <span
       className={
         isPerfect
-          ? 'inline-flex items-center gap-2 rounded-full bg-amber-400/15 px-3 py-1 text-amber-300'
+          ? 'inline-flex items-center gap-2 text-amber-300'
           : 'font-bold text-white'
       }
     >
       <span>{result.min === result.max ? result.min : `${result.min}–${result.max}`}</span>
-      {isPerfect && <span className="text-xs font-bold">最棒</span>}
+      {isPerfect && <span className="text-base font-bold">最棒</span>}
     </span>
   )
 }
@@ -84,18 +84,18 @@ export function StatRow({
   onChange,
 }: StatRowProps) {
   return (
-    <div className="grid gap-3 border-t border-slate-800 px-4 py-4 sm:grid-cols-[1.25fr_0.65fr_1fr_1fr_1.2fr] sm:items-center sm:px-5">
+    <div className="stat-row grid gap-3 border-t px-4 py-4 transition-colors sm:grid-cols-[1.25fr_0.65fr_1fr_1fr_1.2fr] sm:items-center sm:px-5">
       <div className="flex items-center justify-between sm:block">
         <div className="font-bold text-white">
           {label}
           <NatureBadge modifier={natureModifier} />
         </div>
         <div className="text-sm text-slate-500 sm:hidden">
-          種族值 <span className="font-mono text-slate-300">{baseStat ?? '—'}</span>
+          種族值 <span className="font-mono text-lg text-slate-300">{baseStat ?? '—'}</span>
         </div>
       </div>
 
-      <div className="hidden font-mono text-sm text-slate-300 sm:block">
+      <div className="hidden font-mono text-lg text-slate-300 sm:block">
         {baseStat ?? '—'}
       </div>
 
@@ -129,7 +129,7 @@ export function StatRow({
         <span className="text-xs font-semibold text-slate-500 sm:sr-only">IV 結果</span>
         <div
           aria-live="polite"
-          className="min-h-8 text-sm sm:flex sm:items-center"
+          className="result-cell min-h-8 px-3 py-2 text-lg sm:flex sm:items-center sm:justify-center"
         >
           <ResultDisplay result={result} />
         </div>

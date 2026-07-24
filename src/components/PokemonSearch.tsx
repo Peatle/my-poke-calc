@@ -70,7 +70,7 @@ export function PokemonSearch({
   return (
     <div className="relative">
       <label
-        className="mb-2 block text-sm font-semibold text-slate-200"
+        className="field-label mb-2 block text-sm font-semibold"
         htmlFor="pokemon-search"
       >
         寶可夢
@@ -92,7 +92,7 @@ export function PokemonSearch({
           aria-controls={listboxId}
           aria-expanded={isOpen}
           autoComplete="off"
-          className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 py-3.5 pl-11 pr-4 text-base text-white outline-none transition placeholder:text-slate-500 focus:border-red-400 focus:ring-4 focus:ring-red-500/10"
+          className="search-control w-full rounded-2xl border py-3.5 pl-11 pr-4 text-base outline-none transition"
           id="pokemon-search"
           onChange={(event) => {
             onQueryChange(event.target.value)
@@ -110,7 +110,7 @@ export function PokemonSearch({
 
       {isOpen && (
         <ul
-          className="absolute z-30 mt-2 max-h-80 w-full overflow-auto rounded-2xl border border-slate-700 bg-slate-950 p-2 shadow-2xl shadow-black/40"
+          className="suggestions-panel absolute z-30 mt-2 max-h-80 w-full overflow-auto rounded-2xl border p-2 shadow-2xl shadow-black/40"
           id={listboxId}
           role="listbox"
         >
@@ -120,7 +120,7 @@ export function PokemonSearch({
                 aria-selected={selectedPokemon?.key === pokemon.key}
                 className={`cursor-pointer rounded-xl px-3 py-2.5 transition ${
                   index === activeIndex
-                    ? 'bg-red-500/15 text-white'
+                    ? 'suggestion-active'
                     : 'text-slate-300 hover:bg-slate-800'
                 }`}
                 id={`${listboxId}-${index}`}
@@ -130,7 +130,7 @@ export function PokemonSearch({
                 onClick={() => selectPokemon(pokemon)}
                 role="option"
               >
-                <span className="mr-3 font-mono text-xs font-bold text-red-300">
+                <span className="suggestion-id mr-3 font-mono text-xs font-bold">
                   {formatDexNumber(pokemon.id)}
                 </span>
                 <span className="font-semibold">{pokemon.displayName}</span>

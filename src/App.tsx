@@ -150,19 +150,19 @@ function App() {
       <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
         <header className="mb-8 flex flex-col gap-5 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-red-400/20 bg-red-500/10 px-3 py-1 text-xs font-bold tracking-[0.18em] text-red-300">
-              <span aria-hidden="true">●</span>
+            <div className="brand-kicker mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold tracking-[0.18em]">
+              <span aria-hidden="true" className="brand-kicker-dot">●</span>
               GEN 9 · IV CALCULATOR
             </div>
-            <h1 className="text-3xl font-black tracking-tight text-white sm:text-5xl">
+            <h1 className="page-title text-3xl font-black tracking-tight sm:text-5xl">
               寶可夢 IV 計算器
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base">
+            <p className="page-copy mt-3 max-w-2xl text-sm leading-6 sm:text-base">
               輸入遊戲中的能力值、努力值與性格，即時逆推出可能的個體值範圍。
             </p>
           </div>
           <button
-            className="self-start rounded-xl border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-slate-500 hover:bg-slate-800 hover:text-white sm:self-auto"
+            className="reset-button self-start rounded-xl px-4 py-2 text-sm font-semibold transition sm:self-auto"
             onClick={resetForm}
             type="button"
           >
@@ -170,7 +170,7 @@ function App() {
           </button>
         </header>
 
-        <section className="mb-6 grid gap-5 rounded-3xl border border-slate-800 bg-slate-900/75 p-5 shadow-2xl shadow-black/20 backdrop-blur sm:grid-cols-2 sm:p-7 lg:grid-cols-[1.4fr_0.55fr_0.8fr]">
+        <section className="surface-panel mb-6 grid gap-5 rounded-3xl border p-5 backdrop-blur sm:grid-cols-2 sm:p-7 lg:grid-cols-[1.4fr_0.55fr_0.8fr]">
           <PokemonSearch
             onQueryChange={setPokemonQuery}
             onSelect={selectPokemon}
@@ -180,7 +180,7 @@ function App() {
 
           <div>
             <label
-              className="mb-2 block text-sm font-semibold text-slate-200"
+              className="field-label mb-2 block text-sm font-semibold"
               htmlFor="level"
             >
               等級
@@ -205,13 +205,13 @@ function App() {
 
           <div>
             <label
-              className="mb-2 block text-sm font-semibold text-slate-200"
+              className="field-label mb-2 block text-sm font-semibold"
               htmlFor="nature"
             >
               性格
             </label>
             <select
-              className="h-[54px] w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 text-base text-white outline-none transition focus:border-red-400 focus:ring-4 focus:ring-red-500/10"
+              className="select-control h-[54px] w-full rounded-2xl border px-4 text-base outline-none transition"
               id="nature"
               onChange={(event) => setNatureId(event.target.value)}
               value={natureId}
@@ -226,9 +226,9 @@ function App() {
         </section>
 
         {selectedPokemon ? (
-          <section className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-800 bg-slate-900/50 px-5 py-4">
+          <section className="selected-card mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-5 py-4">
             <div>
-              <span className="mr-3 font-mono text-sm font-bold text-red-300">
+              <span className="suggestion-id mr-3 font-mono text-sm font-bold">
                 {formatDexNumber(selectedPokemon.id)}
               </span>
               <span className="text-lg font-black text-white">
@@ -249,13 +249,13 @@ function App() {
             </div>
           </section>
         ) : (
-          <section className="mb-5 rounded-2xl border border-dashed border-slate-700 bg-slate-900/30 px-5 py-4 text-center text-sm text-slate-500">
+          <section className="empty-card mb-5 rounded-2xl border px-5 py-4 text-center text-sm">
             請先搜尋並選擇一隻寶可夢
           </section>
         )}
 
-        <section className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/80 shadow-2xl shadow-black/20">
-          <div className="hidden grid-cols-[1.25fr_0.65fr_1fr_1fr_1.2fr] gap-3 bg-slate-950/70 px-5 py-3 text-xs font-bold uppercase tracking-wider text-slate-500 sm:grid">
+        <section className="stats-panel overflow-hidden rounded-3xl border">
+          <div className="stats-header hidden grid-cols-[1.25fr_0.65fr_1fr_1fr_1.2fr] gap-3 px-5 py-3 text-base font-bold uppercase tracking-wider sm:grid">
             <span>能力</span>
             <span>種族值</span>
             <span>實際能力值</span>
@@ -279,7 +279,7 @@ function App() {
           ))}
         </section>
 
-        <footer className="mt-6 flex flex-col gap-2 px-2 text-xs leading-5 text-slate-500 sm:flex-row sm:justify-between">
+        <footer className="footer-copy mt-6 flex flex-col gap-2 px-2 text-xs leading-5 sm:flex-row sm:justify-between">
           <p>適用 Gen 9 一般 IV 規則；結果會受等級、性格與 EV 影響。</p>
           <p>資料來源：PokeAPI</p>
         </footer>
