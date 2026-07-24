@@ -50,7 +50,8 @@ const EXCLUDED = [
     '-stretchy',        // 米立龍 (平挺姿態)
     '-three-segment',   // 土龍節節 (三節形態)
     '-build',           // 故勒頓 (所有乘騎模式)
-    '-mode'             // 密勒頓 (所有乘騎模式)
+    '-mode',            // 密勒頓 (所有乘騎模式)
+    '-totem',           // 霸主形態
 ];
 
 // Minior 專屬規則：只保留 minior-red-meteor（非戰鬥狀態代表），其餘全部剔除
@@ -76,7 +77,7 @@ function pruneData() {
             // 針對不同世代，動態增加要剔除的地區型態或特殊型態後綴
             const genSpecificExcluded = [...EXCLUDED];
             if (i < 7) {
-                genSpecificExcluded.push('-alola', '-totem'); // Gen 7 引入阿羅拉與霸主
+                genSpecificExcluded.push('-alola'); // Gen 7 引入阿羅拉
             }
             if (i < 8) {
                 genSpecificExcluded.push('-galar'); // Gen 8 引入伽勒爾
