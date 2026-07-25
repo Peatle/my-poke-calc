@@ -31,8 +31,8 @@ function NatureBadge({ modifier }: { modifier: NatureModifier }) {
     <span
       className={`ml-2 rounded-full px-2 py-0.5 text-[11px] font-bold ${
         modifier === 1.1
-          ? 'bg-rose-500/15 text-rose-300'
-          : 'bg-sky-500/15 text-sky-300'
+          ? 'bg-emerald-500/15 text-emerald-300'
+          : 'bg-red-500/15 text-red-300'
       }`}
     >
       {modifier === 1.1 ? '↑ 1.1' : '↓ 0.9'}
