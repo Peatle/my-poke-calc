@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import gen1Stats from './data/stats/gen1.json';
-import gen2Stats from './data/stats/gen2.json';
-import gen6Stats from './data/stats/gen6.json';
-import gen7Stats from './data/stats/gen7.json';
-import gen8Stats from './data/stats/gen8.json';
-import gen9Stats from './data/stats/gen9.json';
-import zhNames from './locales/zh-Hant/pokemon-names.json';
+import gen1Stats from './stats/gen1.json';
+import gen2Stats from './stats/gen2.json';
+import gen6Stats from './stats/gen6.json';
+import gen7Stats from './stats/gen7.json';
+import gen8Stats from './stats/gen8.json';
+import gen9Stats from './stats/gen9.json';
+import zhNames from '../locales/zh-Hant/pokemon-names.json';
 
 describe('寶可夢數據完整性驗證', () => {
 
