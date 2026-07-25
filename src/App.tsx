@@ -276,9 +276,23 @@ function App() {
           ))}
         </section>
 
-        <footer className="footer-copy mt-6 flex flex-col gap-2 px-2 text-xs leading-5 sm:flex-row sm:justify-between">
-          <p>適用 Gen 9 一般 IV 規則；結果會受等級、性格與 EV 影響。</p>
-          <p>資料來源：PokeAPI</p>
+        <footer className="footer-copy mt-6 flex flex-col gap-2 px-2 text-xs leading-5">
+          <p>
+            資料來源：
+            <a
+              href="https://pokeapi.co/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              PokéAPI（pokeapi.co）
+            </a>
+          </p>
+          <p>計算結果僅供參考，請以遊戲內實際資料為準。</p>
+          <p>
+            本網站為非官方、非商業性的粉絲製作資訊工具，與任天堂、Game
+            Freak、Creatures Inc. 及 The Pokémon Company
+            無任何關聯。寶可夢（Pokémon）及相關商標與內容之權利歸其各自權利人所有。
+          </p>
         </footer>
       </div>
     </main>

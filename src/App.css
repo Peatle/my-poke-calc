@@ -56,6 +56,24 @@
   color: var(--color-muted);
 }
 
+.footer-copy a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: rgb(255 214 28 / 45%);
+  text-underline-offset: 0.2em;
+}
+
+.footer-copy a:hover {
+  color: #fff0a2;
+  text-decoration-color: currentColor;
+}
+
+.footer-copy a:focus-visible {
+  border-radius: 0.2rem;
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 .reset-button {
   border: 1px solid #ffe153;
   color: var(--color-accent-ink);

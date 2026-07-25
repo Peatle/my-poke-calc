@@ -54,10 +54,18 @@ npm run build
 npm run data:update
 ```
 
-這會重新抓取名稱與種族值資料，再執行型態清理。資料來源為 [PokeAPI](https://pokeapi.co/)。
+這會重新抓取名稱與種族值資料，再執行型態清理。資料來源為 [PokéAPI](https://pokeapi.co/)。
 
 ## 目前範圍
 
 第一版 UI 只使用 `gen9.json` 與 Gen 3–9 的現代 IV 公式。Gen 1 DV 引擎已有獨立測試，但尚未接入畫面；Gen 2 DV、未知 EV、極限特訓、歷史紀錄、多語系切換與 PWA 留待後續版本。
 
 更多細節請參閱 [IV 計算引擎：支援範圍與限制](docs/iv-calculator.md)。
+
+## 資料來源與免責聲明
+
+資料來源：[PokéAPI](https://pokeapi.co/)。
+
+計算結果僅供參考，請以遊戲內實際資料為準。
+
+本網站為非官方、非商業性的粉絲製作資訊工具，與任天堂、Game Freak、Creatures Inc. 及 The Pokémon Company 無任何關聯。寶可夢（Pokémon）及相關商標與內容之權利歸其各自權利人所有。
