@@ -16,7 +16,7 @@ async function selectPokemon(query: string, optionName: RegExp) {
 }
 
 describe('Gen 9 IV 計算器 UI', () => {
-  it('初始顯示預設等級、認真性格與圖鑑排序建議', async () => {
+  it('空白搜尋不顯示建議，輸入文字後才顯示結果', async () => {
     const user = userEvent.setup()
     render(<App />)
 
@@ -25,10 +25,23 @@ describe('Gen 9 IV 計算器 UI', () => {
       'serious',
     )
 
-    await user.click(screen.getByRole('combobox', { name: '寶可夢' }))
-    const options = screen.getAllByRole('option')
-    expect(options[0]).toHaveTextContent('#0001')
-    expect(options[0]).toHaveTextContent('妙蛙種子')
+    const searchInput = screen.getByRole('combobox', { name: '寶可夢' })
+    await user.click(searchInput)
+    expect(searchInput).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+
+    await user.type(searchInput, '妙蛙種子')
+    expect(searchInput).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    expect(
+      screen.getByRole('option', {
+        name: /#0001.*妙蛙種子.*Bulbasaur/i,
+      }),
+    ).toBeInTheDocument()
+
+    await user.clear(searchInput)
+    expect(searchInput).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
   })
 
   it('支援英文搜尋與鍵盤 Enter 選取', async () => {

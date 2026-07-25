@@ -27,6 +27,8 @@ export function PokemonSearch({
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
   const suggestions = useMemo(() => searchPokemon(query), [query])
+  const hasQuery = query.trim() !== ''
+  const isListboxVisible = isOpen && hasQuery
 
   const selectPokemon = (pokemon: PokemonCatalogEntry) => {
     onSelect(pokemon)
@@ -84,13 +86,13 @@ export function PokemonSearch({
         </span>
         <input
           aria-activedescendant={
-            isOpen && suggestions[activeIndex]
+            isListboxVisible && suggestions[activeIndex]
               ? `${listboxId}-${activeIndex}`
               : undefined
           }
           aria-autocomplete="list"
           aria-controls={listboxId}
-          aria-expanded={isOpen}
+          aria-expanded={isListboxVisible}
           autoComplete="off"
           className="search-control w-full rounded-2xl border py-3.5 pl-11 pr-4 text-base outline-none transition"
           id="pokemon-search"
@@ -108,7 +110,7 @@ export function PokemonSearch({
         />
       </div>
 
-      {isOpen && (
+      {isListboxVisible && (
         <ul
           className="suggestions-panel absolute z-30 mt-2 max-h-80 w-full overflow-auto rounded-2xl border p-2 shadow-2xl shadow-black/40"
           id={listboxId}
