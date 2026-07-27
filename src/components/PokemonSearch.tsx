@@ -100,7 +100,7 @@ export function PokemonSearch({
           aria-controls={listboxId}
           aria-expanded={isListboxVisible}
           autoComplete="off"
-          className="search-control w-full rounded-2xl border py-3.5 pl-11 pr-4 text-base outline-none transition"
+          className="search-control w-full rounded-xl border py-3.5 pl-11 pr-4 text-base outline-none transition"
           id="pokemon-search"
           onBlur={() => {
             setIsOpen(false)

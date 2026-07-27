@@ -194,7 +194,7 @@ function App() {
               遊戲世代
             </label>
             <select
-              className="select-control h-[54px] w-full rounded-2xl border px-4 text-base outline-none transition"
+              className="select-control h-[54px] w-full rounded-xl border px-4 text-base outline-none transition"
               id="generation"
               onChange={(event) =>
                 changeGeneration(event.target.value as GenerationId)
@@ -251,7 +251,7 @@ function App() {
               性格
             </label>
             <select
-              className="select-control h-[54px] w-full rounded-2xl border px-4 text-base outline-none transition"
+              className="select-control h-[54px] w-full rounded-xl border px-4 text-base outline-none transition"
               id="nature"
               onChange={(event) => setNatureId(event.target.value)}
               value={natureId}
