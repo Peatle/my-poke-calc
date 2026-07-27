@@ -4,6 +4,7 @@ import {
   useState,
   type KeyboardEvent,
 } from 'react'
+import type { GenerationId } from '../data/generations'
 import {
   formatDexNumber,
   searchPokemon,
@@ -11,6 +12,7 @@ import {
 } from '../data/pokemonCatalog'
 
 interface PokemonSearchProps {
+  generation: GenerationId
   query: string
   selectedPokemon: PokemonCatalogEntry | null
   onQueryChange: (query: string) => void
@@ -18,6 +20,7 @@ interface PokemonSearchProps {
 }
 
 export function PokemonSearch({
+  generation,
   query,
   selectedPokemon,
   onQueryChange,
@@ -26,7 +29,10 @@ export function PokemonSearch({
   const listboxId = useId()
   const [isOpen, setIsOpen] = useState(false)
   const [activeIndex, setActiveIndex] = useState(0)
-  const suggestions = useMemo(() => searchPokemon(query), [query])
+  const suggestions = useMemo(
+    () => searchPokemon(query, generation),
+    [generation, query],
+  )
   const hasQuery = query.trim() !== ''
   const isListboxVisible = isOpen && hasQuery
 

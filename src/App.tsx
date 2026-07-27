@@ -6,6 +6,11 @@ import {
   type StatInputValue,
   type StatResult,
 } from './components/StatRow'
+import {
+  DEFAULT_GENERATION,
+  GENERATIONS,
+  type GenerationId,
+} from './data/generations'
 import { NATURES, getNatureModifier } from './data/natures'
 import {
   formatDexNumber,
@@ -48,6 +53,8 @@ function parseIntegerInRange(
 }
 
 function App() {
+  const [generation, setGeneration] =
+    useState<GenerationId>(DEFAULT_GENERATION)
   const [selectedPokemon, setSelectedPokemon] =
     useState<PokemonCatalogEntry | null>(null)
   const [pokemonQuery, setPokemonQuery] = useState('')
@@ -140,6 +147,17 @@ function App() {
     setStatInputs(createInitialStatInputs())
   }
 
+  const changeGeneration = (nextGeneration: GenerationId) => {
+    if (nextGeneration === generation) {
+      return
+    }
+
+    setGeneration(nextGeneration)
+    setSelectedPokemon(null)
+    setPokemonQuery('')
+    setStatInputs(createInitialStatInputs())
+  }
+
   const selectPokemon = (pokemon: PokemonCatalogEntry) => {
     setSelectedPokemon(pokemon)
     setStatInputs(createInitialStatInputs())
@@ -152,7 +170,7 @@ function App() {
           <div>
             <div className="brand-kicker mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold tracking-[0.18em]">
               <span aria-hidden="true" className="brand-kicker-dot">●</span>
-              GEN 9 · IV CALCULATOR
+              {GENERATIONS[generation].shortLabel} · IV CALCULATOR
             </div>
             <h1 className="page-title text-3xl font-black tracking-tight sm:text-5xl">
               寶可夢 IV 計算器
@@ -167,8 +185,33 @@ function App() {
           </button>
         </header>
 
-        <section className="surface-panel mb-6 grid gap-5 rounded-3xl border p-5 backdrop-blur sm:grid-cols-2 sm:p-7 lg:grid-cols-[1.4fr_0.55fr_0.8fr]">
+        <section className="surface-panel mb-6 grid gap-5 rounded-3xl border p-5 backdrop-blur sm:grid-cols-2 sm:p-7 lg:grid-cols-[0.9fr_1.4fr_0.55fr_0.8fr]">
+          <div>
+            <label
+              className="field-label mb-2 block text-sm font-semibold"
+              htmlFor="generation"
+            >
+              遊戲世代
+            </label>
+            <select
+              className="select-control h-[54px] w-full rounded-2xl border px-4 text-base outline-none transition"
+              id="generation"
+              onChange={(event) =>
+                changeGeneration(event.target.value as GenerationId)
+              }
+              value={generation}
+            >
+              {Object.entries(GENERATIONS).map(([id, config]) => (
+                <option key={id} value={id}>
+                  {config.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <PokemonSearch
+            generation={generation}
+            key={generation}
             onQueryChange={setPokemonQuery}
             onSelect={selectPokemon}
             query={pokemonQuery}

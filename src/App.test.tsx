@@ -1,7 +1,13 @@
 // @vitest-environment jsdom
 
 import '@testing-library/jest-dom/vitest'
-import { createEvent, fireEvent, render, screen } from '@testing-library/react'
+import {
+  createEvent,
+  fireEvent,
+  render,
+  screen,
+  within,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import App from './App'
@@ -15,7 +21,16 @@ async function selectPokemon(query: string, optionName: RegExp) {
   return user
 }
 
-describe('Gen 9 IV 計算器 UI', () => {
+describe('Gen 8／Gen 9 IV 計算器 UI', () => {
+  it('預設使用 Gen 9 並顯示對應 Header', () => {
+    render(<App />)
+
+    expect(screen.getByRole('combobox', { name: '遊戲世代' })).toHaveValue(
+      'gen9',
+    )
+    expect(screen.getByText('GEN 9 · IV CALCULATOR')).toBeInTheDocument()
+  })
+
   it('空白搜尋不顯示建議，輸入文字後才顯示結果', async () => {
     const user = userEvent.setup()
     render(<App />)
@@ -192,5 +207,100 @@ describe('Gen 9 IV 計算器 UI', () => {
     expect(screen.getByText('無法逆推 IV')).toBeInTheDocument()
     expect(screen.getByLabelText('HP實際能力值')).toBeDisabled()
     expect(screen.getByLabelText('攻擊實際能力值')).toBeEnabled()
+  })
+
+  it('切換 Gen 8 會更新 Header、搜尋資料與歷史種族值', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await user.selectOptions(
+      screen.getByRole('combobox', { name: '遊戲世代' }),
+      'gen8',
+    )
+
+    expect(screen.getByText('GEN 8 · IV CALCULATOR')).toBeInTheDocument()
+    expect(screen.queryByText('GEN 9 · IV CALCULATOR')).not.toBeInTheDocument()
+
+    await selectPokemon('克雷色利亞', /#0488.*克雷色利亞.*Cresselia/i)
+
+    const defenseRow = screen
+      .getByLabelText('防禦實際能力值')
+      .closest('.stat-row')
+    const specialDefenseRow = screen
+      .getByLabelText('特防實際能力值')
+      .closest('.stat-row')
+
+    expect(defenseRow).not.toBeNull()
+    expect(specialDefenseRow).not.toBeNull()
+    expect(within(defenseRow as HTMLElement).getAllByText('120')).toHaveLength(2)
+    expect(
+      within(specialDefenseRow as HTMLElement).getAllByText('130'),
+    ).toHaveLength(2)
+
+    const levelInput = screen.getByRole('spinbutton', { name: '等級' })
+    await user.clear(levelInput)
+    await user.type(levelInput, '100')
+    await user.type(screen.getByLabelText('防禦實際能力值'), '276')
+    expect(within(defenseRow as HTMLElement).getByText('31')).toBeInTheDocument()
+    expect(
+      within(defenseRow as HTMLElement).getByText('最棒'),
+    ).toBeInTheDocument()
+  })
+
+  it('切換世代會清除相依欄位，但保留等級與性格', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+
+    const levelInput = screen.getByRole('spinbutton', { name: '等級' })
+    await user.clear(levelInput)
+    await user.type(levelInput, '75')
+    await user.selectOptions(
+      screen.getByRole('combobox', { name: '性格' }),
+      'adamant',
+    )
+    await user.type(screen.getByLabelText('攻擊實際能力值'), '100')
+    await user.clear(screen.getByLabelText('攻擊EV'))
+    await user.type(screen.getByLabelText('攻擊EV'), '252')
+
+    await user.selectOptions(
+      screen.getByRole('combobox', { name: '遊戲世代' }),
+      'gen8',
+    )
+
+    expect(screen.getByRole('combobox', { name: '寶可夢' })).toHaveValue('')
+    expect(screen.getByText('請先搜尋並選擇一隻寶可夢')).toBeInTheDocument()
+    expect(levelInput).toHaveValue(75)
+    expect(screen.getByRole('combobox', { name: '性格' })).toHaveValue(
+      'adamant',
+    )
+    expect(screen.getByLabelText('攻擊實際能力值')).toHaveValue(null)
+    expect(screen.getByLabelText('攻擊EV')).toHaveValue(0)
+  })
+
+  it('世代切換會關閉舊搜尋結果，重設全部則保留目前世代', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    const searchInput = screen.getByRole('combobox', { name: '寶可夢' })
+    await user.type(searchInput, '899')
+    expect(screen.getByRole('option', { name: /#0899.*詭角鹿/i })).toBeInTheDocument()
+
+    await user.selectOptions(
+      screen.getByRole('combobox', { name: '遊戲世代' }),
+      'gen8',
+    )
+
+    const resetSearchInput = screen.getByRole('combobox', { name: '寶可夢' })
+    expect(resetSearchInput).toHaveValue('')
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+
+    await user.type(resetSearchInput, '899')
+    expect(screen.getByText('找不到符合的寶可夢')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: '重設全部' }))
+    expect(screen.getByRole('combobox', { name: '遊戲世代' })).toHaveValue(
+      'gen8',
+    )
   })
 })
