@@ -46,6 +46,9 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     expect(searchInput).toHaveAttribute('aria-expanded', 'false')
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
+    await user.keyboard('{Enter}')
+    expect(screen.queryByText('#0001')).not.toBeInTheDocument()
+
     await user.type(searchInput, '妙蛙種子')
     expect(searchInput).toHaveAttribute('aria-expanded', 'true')
     expect(screen.getByRole('listbox')).toBeInTheDocument()
@@ -85,6 +88,25 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
 
     expect(screen.getByText('#0001')).toBeInTheDocument()
     expect(screen.getByText('妙蛙種子')).toBeInTheDocument()
+  })
+
+  it('修改已選寶可夢的搜尋文字會清除舊選擇與能力輸入', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    await selectPokemon('妙蛙種子', /#0001.*妙蛙種子.*Bulbasaur/i)
+
+    const hpInput = screen.getByRole('spinbutton', { name: 'HP實際能力值' })
+    await user.type(hpInput, '120')
+    expect(hpInput).toHaveValue(120)
+
+    const searchInput = screen.getByRole('combobox', { name: '寶可夢' })
+    await user.clear(searchInput)
+    await user.type(searchInput, '皮卡丘')
+
+    expect(screen.queryByText('#0001')).not.toBeInTheDocument()
+    expect(hpInput).toBeDisabled()
+    expect(hpInput).toHaveValue(null)
   })
 
   it('支援帶前導零的圖鑑編號搜尋', async () => {

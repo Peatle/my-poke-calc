@@ -38,7 +38,6 @@ export function PokemonSearch({
 
   const selectPokemon = (pokemon: PokemonCatalogEntry) => {
     onSelect(pokemon)
-    onQueryChange(`${formatDexNumber(pokemon.id)} ${pokemon.displayName}`)
     setIsOpen(false)
     setActiveIndex(0)
   }
@@ -69,7 +68,11 @@ export function PokemonSearch({
       return
     }
 
-    if (event.key === 'Enter' && isOpen && suggestions[activeIndex]) {
+    if (
+      event.key === 'Enter' &&
+      isListboxVisible &&
+      suggestions[activeIndex]
+    ) {
       event.preventDefault()
       selectPokemon(suggestions[activeIndex])
     }

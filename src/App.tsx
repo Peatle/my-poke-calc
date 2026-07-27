@@ -158,8 +158,18 @@ function App() {
     setStatInputs(createInitialStatInputs())
   }
 
+  const changePokemonQuery = (query: string) => {
+    setPokemonQuery(query)
+
+    if (selectedPokemon) {
+      setSelectedPokemon(null)
+      setStatInputs(createInitialStatInputs())
+    }
+  }
+
   const selectPokemon = (pokemon: PokemonCatalogEntry) => {
     setSelectedPokemon(pokemon)
+    setPokemonQuery(`${formatDexNumber(pokemon.id)} ${pokemon.displayName}`)
     setStatInputs(createInitialStatInputs())
   }
 
@@ -212,7 +222,7 @@ function App() {
           <PokemonSearch
             generation={generation}
             key={generation}
-            onQueryChange={setPokemonQuery}
+            onQueryChange={changePokemonQuery}
             onSelect={selectPokemon}
             query={pokemonQuery}
             selectedPokemon={selectedPokemon}
