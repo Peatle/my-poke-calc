@@ -2,6 +2,7 @@
 
 import '@testing-library/jest-dom/vitest'
 import {
+  act,
   createEvent,
   fireEvent,
   render,
@@ -55,6 +56,21 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     ).toBeInTheDocument()
 
     await user.clear(searchInput)
+    expect(searchInput).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+  })
+
+  it('寶可夢搜尋框失去焦點時關閉 dropdown', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    const searchInput = screen.getByRole('combobox', { name: '寶可夢' })
+    await user.type(searchInput, '妙蛙種子')
+    expect(searchInput).toHaveAttribute('aria-expanded', 'true')
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('spinbutton', { name: '等級' }))
+
     expect(searchInput).toHaveAttribute('aria-expanded', 'false')
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
   })
@@ -160,7 +176,7 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     expect(unfocusedWheel.defaultPrevented).toBe(false)
     expect(parentWheelHandler).toHaveBeenCalledTimes(1)
 
-    attackEv.focus()
+    act(() => attackEv.focus())
     const focusedWheel = createEvent.wheel(attackEv, {
       cancelable: true,
       deltaY: -100,
@@ -174,7 +190,7 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     expect(attackEv).toHaveValue(0)
     expect(parentWheelHandler).toHaveBeenCalledTimes(1)
 
-    attackEv.blur()
+    act(() => attackEv.blur())
     fireEvent.wheel(attackEv, { deltaY: -100 })
     expect(attackEv).toHaveValue(0)
     expect(parentWheelHandler).toHaveBeenCalledTimes(2)
