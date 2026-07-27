@@ -6877,19 +6877,6 @@
     "system": "IV"
   },
   {
-    "id": 483,
-    "key": "dialga-origin",
-    "stats": {
-      "hp": 100,
-      "attack": 100,
-      "defense": 120,
-      "special-attack": 150,
-      "special-defense": 120,
-      "speed": 90
-    },
-    "system": "IV"
-  },
-  {
     "id": 484,
     "key": "palkia",
     "stats": {
@@ -6899,19 +6886,6 @@
       "special-attack": 150,
       "special-defense": 120,
       "speed": 100
-    },
-    "system": "IV"
-  },
-  {
-    "id": 484,
-    "key": "palkia-origin",
-    "stats": {
-      "hp": 90,
-      "attack": 100,
-      "defense": 100,
-      "special-attack": 150,
-      "special-defense": 120,
-      "speed": 120
     },
     "system": "IV"
   },
@@ -12801,136 +12775,6 @@
       "special-attack": 165,
       "special-defense": 100,
       "speed": 150
-    },
-    "system": "IV"
-  },
-  {
-    "id": 899,
-    "key": "wyrdeer",
-    "stats": {
-      "hp": 103,
-      "attack": 105,
-      "defense": 72,
-      "special-attack": 105,
-      "special-defense": 75,
-      "speed": 65
-    },
-    "system": "IV"
-  },
-  {
-    "id": 900,
-    "key": "kleavor",
-    "stats": {
-      "hp": 70,
-      "attack": 135,
-      "defense": 95,
-      "special-attack": 45,
-      "special-defense": 70,
-      "speed": 85
-    },
-    "system": "IV"
-  },
-  {
-    "id": 901,
-    "key": "ursaluna",
-    "stats": {
-      "hp": 130,
-      "attack": 140,
-      "defense": 105,
-      "special-attack": 45,
-      "special-defense": 80,
-      "speed": 50
-    },
-    "system": "IV"
-  },
-  {
-    "id": 901,
-    "key": "ursaluna-bloodmoon",
-    "stats": {
-      "hp": 113,
-      "attack": 70,
-      "defense": 120,
-      "special-attack": 135,
-      "special-defense": 65,
-      "speed": 52
-    },
-    "system": "IV"
-  },
-  {
-    "id": 902,
-    "key": "basculegion-male",
-    "stats": {
-      "hp": 120,
-      "attack": 112,
-      "defense": 65,
-      "special-attack": 80,
-      "special-defense": 75,
-      "speed": 78
-    },
-    "system": "IV"
-  },
-  {
-    "id": 902,
-    "key": "basculegion-female",
-    "stats": {
-      "hp": 120,
-      "attack": 92,
-      "defense": 65,
-      "special-attack": 100,
-      "special-defense": 75,
-      "speed": 78
-    },
-    "system": "IV"
-  },
-  {
-    "id": 903,
-    "key": "sneasler",
-    "stats": {
-      "hp": 80,
-      "attack": 130,
-      "defense": 60,
-      "special-attack": 40,
-      "special-defense": 80,
-      "speed": 120
-    },
-    "system": "IV"
-  },
-  {
-    "id": 904,
-    "key": "overqwil",
-    "stats": {
-      "hp": 85,
-      "attack": 115,
-      "defense": 95,
-      "special-attack": 65,
-      "special-defense": 65,
-      "speed": 85
-    },
-    "system": "IV"
-  },
-  {
-    "id": 905,
-    "key": "enamorus-incarnate",
-    "stats": {
-      "hp": 74,
-      "attack": 115,
-      "defense": 70,
-      "special-attack": 135,
-      "special-defense": 80,
-      "speed": 106
-    },
-    "system": "IV"
-  },
-  {
-    "id": 905,
-    "key": "enamorus-therian",
-    "stats": {
-      "hp": 74,
-      "attack": 115,
-      "defense": 110,
-      "special-attack": 135,
-      "special-defense": 100,
-      "speed": 46
     },
     "system": "IV"
   }

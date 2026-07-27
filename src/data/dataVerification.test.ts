@@ -6,6 +6,7 @@ import gen7Stats from './stats/gen7.json';
 import gen8Stats from './stats/gen8.json';
 import gen9Stats from './stats/gen9.json';
 import zhNames from '../locales/zh-Hant/pokemon-names.json';
+import enNames from '../locales/en/pokemon-names.json';
 
 describe('寶可夢數據完整性驗證', () => {
 
@@ -195,6 +196,59 @@ describe('寶可夢數據完整性驗證', () => {
         it('堅盾劍怪刀劍形態 (aegislash-blade) 應已被 pruneData 剔除，資料中不應存在', () => {
             const aegislashBlade = gen8Stats.find(p => p.key === 'aegislash-blade');
             expect(aegislashBlade).toBeUndefined();
+        });
+    });
+
+    // -----------------------------------------------------------------------
+    // Gen 8（劍／盾／BDSP）資料範圍與歷史數值驗證
+    // -----------------------------------------------------------------------
+    describe('Gen 8（劍／盾／BDSP）支援資料驗證', () => {
+        it('全國圖鑑編號不得超過 #0898 蕾冠王', () => {
+            expect(gen8Stats.every(p => p.id <= 898)).toBe(true);
+            expect(gen8Stats.some(p => p.id === 898 && p.key === 'calyrex')).toBe(true);
+        });
+
+        it('應精確排除《傳說 阿爾宙斯》專屬起源型態並保留騎拉帝納起源型態', () => {
+            expect(gen8Stats.some(p => p.key === 'dialga-origin')).toBe(false);
+            expect(gen8Stats.some(p => p.key === 'palkia-origin')).toBe(false);
+            expect(gen8Stats.some(p => p.key === 'giratina-origin')).toBe(true);
+        });
+
+        it('應包含劍盾封面傳說與蕾冠王的有效型態', () => {
+            const keys = gen8Stats.map(p => p.key);
+            expect(keys).toEqual(expect.arrayContaining([
+                'zacian',
+                'zacian-crowned',
+                'zamazenta',
+                'zamazenta-crowned',
+                'calyrex',
+                'calyrex-ice',
+                'calyrex-shadow',
+            ]));
+        });
+
+        it('應保留 Gen 8 當時的歷史種族值', () => {
+            const cresselia = gen8Stats.find(p => p.key === 'cresselia');
+            const zacian = gen8Stats.find(p => p.key === 'zacian');
+            const zacianCrowned = gen8Stats.find(p => p.key === 'zacian-crowned');
+            const zamazenta = gen8Stats.find(p => p.key === 'zamazenta');
+            const zamazentaCrowned = gen8Stats.find(p => p.key === 'zamazenta-crowned');
+
+            expect(cresselia?.stats['defense']).toBe(120);
+            expect(cresselia?.stats['special-defense']).toBe(130);
+            expect(zacian?.stats['attack']).toBe(130);
+            expect(zacianCrowned?.stats['attack']).toBe(170);
+            expect(zamazenta?.stats['attack']).toBe(130);
+            expect(zamazentaCrowned?.stats['attack']).toBe(130);
+            expect(zamazentaCrowned?.stats['defense']).toBe(145);
+            expect(zamazentaCrowned?.stats['special-defense']).toBe(145);
+        });
+
+        it('每筆資料都應有繁中與英文名稱', () => {
+            gen8Stats.forEach(p => {
+                expect(zhNames[p.key as keyof typeof zhNames], `缺少繁中名稱: ${p.key}`).toBeDefined();
+                expect(enNames[p.key as keyof typeof enNames], `缺少英文名稱: ${p.key}`).toBeDefined();
+            });
         });
     });
 

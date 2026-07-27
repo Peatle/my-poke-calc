@@ -4,6 +4,11 @@ import path from 'path';
 const STATS_DIR = path.join(process.cwd(), 'src/data/stats');
 const LOCALES_DIR = path.join(process.cwd(), 'src/locales');
 const LANGUAGES = ['zh-Hant', 'en', 'ja'];
+const GEN8_MAX_ID = 898;
+const GEN8_EXCLUDED_KEYS = new Set([
+    'dialga-origin',
+    'palkia-origin',
+]);
 
 // 終極過濾清單：明確加入 -mega-x 與 -mega-y
 const EXCLUDED = [
@@ -60,14 +65,43 @@ function isExcludedMinior(key) {
     return key.startsWith('minior-') && key !== MINIOR_KEEP;
 }
 
+function parseTargetGeneration(args) {
+    const optionIndex = args.findIndex(arg => arg === '--gen' || arg.startsWith('--gen='));
+    if (optionIndex === -1) return null;
+
+    const option = args[optionIndex];
+    const rawValue = option === '--gen' ? args[optionIndex + 1] : option.split('=')[1];
+    const generation = Number(rawValue);
+
+    if (!Number.isInteger(generation) || generation < 1 || generation > 9) {
+        throw new Error('--gen 必須是 1 到 9 的整數');
+    }
+
+    return generation;
+}
+
+function isExcludedForGeneration(pokemon, generation) {
+    if (generation === 8) {
+        return pokemon.id > GEN8_MAX_ID || GEN8_EXCLUDED_KEYS.has(pokemon.key);
+    }
+
+    return false;
+}
+
 function pruneData() {
-    console.log("🧹 啟動本地資料瘦身與清理任務 (含 Mega X/Y 校準)...");
+    const targetGeneration = parseTargetGeneration(process.argv.slice(2));
+    const generations = targetGeneration === null
+        ? Array.from({ length: 9 }, (_, index) => index + 1)
+        : [targetGeneration];
+    const scopeLabel = targetGeneration === null ? '全 9 世代' : `Gen ${targetGeneration}`;
+
+    console.log(`🧹 啟動「${scopeLabel}」本地資料瘦身與清理任務...`);
 
     // ==========================================
     // 1. 清理數值資料 (gen1.json ~ gen9.json)
     // ==========================================
     console.log("\n📊 正在清理數值資料...");
-    for (let i = 1; i <= 9; i++) {
+    for (const i of generations) {
         const filePath = path.join(STATS_DIR, `gen${i}.json`);
 
         if (fs.existsSync(filePath)) {
@@ -90,7 +124,9 @@ function pruneData() {
             // 使用 includes 確保只要字串內包含該後綴就剔除
             // 另外：minior 只保留 minior-red-meteor 一筆
             const filteredList = statsList.filter(p =>
-                !genSpecificExcluded.some(ex => p.key.includes(ex)) && !isExcludedMinior(p.key)
+                !genSpecificExcluded.some(ex => p.key.includes(ex)) &&
+                !isExcludedMinior(p.key) &&
+                !isExcludedForGeneration(p, i)
             );
 
             const removedCount = originalLength - filteredList.length;
@@ -102,31 +138,35 @@ function pruneData() {
     // ==========================================
     // 2. 清理多語系名稱字典 (pokemon-names.json)
     // ==========================================
-    console.log("\n🌐 正在清理多語系名稱字典...");
-    LANGUAGES.forEach(lang => {
-        const filePath = path.join(LOCALES_DIR, lang, 'pokemon-names.json');
+    if (targetGeneration === null) {
+        console.log("\n🌐 正在清理多語系名稱字典...");
+        LANGUAGES.forEach(lang => {
+            const filePath = path.join(LOCALES_DIR, lang, 'pokemon-names.json');
 
-        if (fs.existsSync(filePath)) {
-            const rawData = fs.readFileSync(filePath, 'utf-8');
-            const nameDict = JSON.parse(rawData);
+            if (fs.existsSync(filePath)) {
+                const rawData = fs.readFileSync(filePath, 'utf-8');
+                const nameDict = JSON.parse(rawData);
 
-            const originalLength = Object.keys(nameDict).length;
-            const filteredDict = {};
+                const originalLength = Object.keys(nameDict).length;
+                const filteredDict = {};
 
-            for (const [key, value] of Object.entries(nameDict)) {
-                // 同樣使用 includes 嚴格過濾；另外 minior 只保留 minior-red-meteor
-                if (!EXCLUDED.some(ex => key.includes(ex)) && !isExcludedMinior(key)) {
-                    filteredDict[key] = value;
+                for (const [key, value] of Object.entries(nameDict)) {
+                    // 同樣使用 includes 嚴格過濾；另外 minior 只保留 minior-red-meteor
+                    if (!EXCLUDED.some(ex => key.includes(ex)) && !isExcludedMinior(key)) {
+                        filteredDict[key] = value;
+                    }
                 }
+
+                const removedCount = originalLength - Object.keys(filteredDict).length;
+                fs.writeFileSync(filePath, JSON.stringify(filteredDict, null, 2));
+                console.log(` ✅ ${lang} 字典: 移除了 ${removedCount} 筆暫時狀態資料 (剩餘 ${Object.keys(filteredDict).length} 筆)`);
             }
+        });
+    } else {
+        console.log("\n🌐 定向世代模式不改寫共用多語系名稱字典。");
+    }
 
-            const removedCount = originalLength - Object.keys(filteredDict).length;
-            fs.writeFileSync(filePath, JSON.stringify(filteredDict, null, 2));
-            console.log(` ✅ ${lang} 字典: 移除了 ${removedCount} 筆暫時狀態資料 (剩餘 ${Object.keys(filteredDict).length} 筆)`);
-        }
-    });
-
-    console.log("\n🎉 Mega X 與 Mega Y 等型態，以及多餘的 Minior 變體已全數清除完畢！");
+    console.log(`\n🎉 ${scopeLabel}資料清理完畢！`);
 }
 
 pruneData();
