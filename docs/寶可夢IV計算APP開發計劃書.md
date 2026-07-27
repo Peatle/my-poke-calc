@@ -24,7 +24,7 @@
 • **IV 計算引擎：**  
 	• 實作個體值（IV）逆推公式。由於能力值是取整數，IV 通常是一個範圍（Range）。  
 	• **公式參考：**  
-$$Stat \= \\lfloor (\\frac{2 \\times Base \+ IV \+ \\lfloor \\frac{EV}{4} \\rfloor \\times Level}{100} \+ 5\) \\times Nature \\rfloor$$  
+$$Stat = \left\lfloor \left(\left\lfloor \frac{(2 \times Base + IV + \left\lfloor EV / 4 \right\rfloor) \times Level}{100}\right\rfloor + 5\right) \times Nature \right\rfloor$$
 (註：HP 公式略有不同，需分開處理)  
 • **單元測試：** 利用 **Vitest** 撰寫測試案例，確保計算結果與遊戲內數值完全吻合。
 
@@ -52,4 +52,3 @@ $$Stat \= \\lfloor (\\frac{2 \\times Base \+ IV \+ \\lfloor \\frac{EV}{4} \\rflo
 💡 **資深工程師的開發小技巧**  
 • **利用 AI Credits：** 在第二階段抓取 PokeAPI 時，如果發現 API 回傳格式太雜，直接將一部分回傳範例丟給 **Antigravity** 並說：「請幫我寫一個 TypeScript 轉換函數，將這個 API 結構轉成我定義的輕量化 IPokemon 格式。」 這能省下大量手動對欄位的時間。  
 • **PWA 擴充：** 在專案後期，您可以加入 vite-plugin-pwa。這樣您的 GitHub Pages 網頁在手機上開啟時，用戶可以直接「加到主畫面」，運作起來就像原生 App 一樣。
-
