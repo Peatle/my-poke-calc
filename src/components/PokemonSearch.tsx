@@ -12,6 +12,7 @@ import {
 } from '../data/pokemonCatalog'
 
 interface PokemonSearchProps {
+  className?: string
   generation: GenerationId
   query: string
   selectedPokemon: PokemonCatalogEntry | null
@@ -20,6 +21,7 @@ interface PokemonSearchProps {
 }
 
 export function PokemonSearch({
+  className = '',
   generation,
   query,
   selectedPokemon,
@@ -79,9 +81,9 @@ export function PokemonSearch({
   }
 
   return (
-    <div className="relative">
+    <div className={`relative min-w-0 ${className}`}>
       <label
-        className="field-label mb-2 block text-sm font-semibold"
+        className="field-label mb-1 block text-xs font-semibold sm:mb-2 sm:text-sm"
         htmlFor="pokemon-search"
       >
         寶可夢
@@ -103,7 +105,7 @@ export function PokemonSearch({
           aria-controls={listboxId}
           aria-expanded={isListboxVisible}
           autoComplete="off"
-          className="search-control w-full border py-3.5 pl-11 pr-4 text-base outline-none transition"
+          className="search-control h-11 w-full border py-0 pl-10 pr-3 text-sm outline-none transition sm:h-auto sm:py-3.5 sm:pl-11 sm:pr-4 sm:text-base"
           id="pokemon-search"
           onBlur={() => {
             setIsOpen(false)

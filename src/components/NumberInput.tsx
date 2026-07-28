@@ -11,6 +11,7 @@ interface NumberInputProps {
   disabled?: boolean
   invalid?: boolean
   placeholder?: string
+  stepperVisibility?: 'always' | 'desktop-only'
   onChange: (value: string) => void
 }
 
@@ -25,6 +26,7 @@ export function NumberInput({
   disabled = false,
   invalid = false,
   placeholder,
+  stepperVisibility = 'always',
   onChange,
 }: NumberInputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -65,7 +67,9 @@ export function NumberInput({
   }, [changeBy])
 
   return (
-    <div className={`number-input-wrap ${className}`}>
+    <div
+      className={`number-input-wrap number-input-wrap--${stepperVisibility} ${className}`}
+    >
       <input
         aria-describedby={describedBy}
         aria-invalid={invalid}

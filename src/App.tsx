@@ -29,6 +29,15 @@ const STAT_LABELS: Record<StatName, string> = {
   speed: '速度',
 }
 
+const STAT_SHORT_LABELS: Record<StatName, string> = {
+  hp: 'HP',
+  attack: '攻',
+  defense: '防',
+  'special-attack': '特攻',
+  'special-defense': '特防',
+  speed: '速',
+}
+
 function createInitialStatInputs(): Record<StatName, StatInputValue> {
   return Object.fromEntries(
     STAT_NAMES.map((stat) => [stat, { observed: '', ev: '0' }]),
@@ -175,51 +184,46 @@ function App() {
 
   return (
     <main className="app-shell min-h-screen text-slate-100">
-      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
-        <header className="mb-8 flex flex-col gap-5 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <div className="brand-kicker mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold tracking-[0.18em]">
-              <span aria-hidden="true" className="brand-kicker-dot">●</span>
-              {GENERATIONS[generation].shortLabel} · IV CALCULATOR
+      <div className="app-container mx-auto w-full max-w-6xl px-3 py-4 sm:px-6 sm:py-12">
+        <header className="app-header mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 sm:mb-10 sm:flex sm:items-end sm:justify-between">
+          <div className="contents sm:block">
+            <div className="brand-kicker generation-picker col-start-1 row-start-1 rounded-full border sm:mb-3">
+              <span
+                aria-hidden="true"
+                className="generation-picker-dot"
+              />
+              <select
+                aria-label="遊戲世代"
+                className="generation-picker-select"
+                id="generation"
+                onChange={(event) =>
+                  changeGeneration(event.target.value as GenerationId)
+                }
+                value={generation}
+              >
+                {Object.entries(GENERATIONS).map(([id, config]) => (
+                  <option key={id} value={id}>
+                    {config.shortLabel}
+                  </option>
+                ))}
+              </select>
             </div>
-            <h1 className="page-title text-3xl font-black tracking-tight sm:text-5xl">
+            <h1 className="page-title col-start-1 row-start-2 self-center text-3xl font-black tracking-tight sm:text-5xl">
               寶可夢 IV 計算器
             </h1>
           </div>
           <button
-            className="reset-button self-start rounded-xl px-4 py-2 text-sm font-semibold transition sm:self-auto"
+            className="reset-button col-start-2 row-start-2 min-h-9 shrink-0 rounded-lg px-3 py-1.5 text-xs font-semibold transition sm:min-h-0 sm:rounded-xl sm:px-4 sm:py-2 sm:text-sm"
             onClick={resetForm}
             type="button"
           >
-            重設全部
+            重設
           </button>
         </header>
 
-        <section className="surface-panel mb-6 grid gap-5 rounded-3xl border p-5 backdrop-blur sm:grid-cols-2 sm:p-7 lg:grid-cols-[0.9fr_1.4fr_0.55fr_0.8fr]">
-          <div>
-            <label
-              className="field-label mb-2 block text-sm font-semibold"
-              htmlFor="generation"
-            >
-              遊戲世代
-            </label>
-            <select
-              className="select-control h-[54px] w-full border px-4 text-base outline-none transition"
-              id="generation"
-              onChange={(event) =>
-                changeGeneration(event.target.value as GenerationId)
-              }
-              value={generation}
-            >
-              {Object.entries(GENERATIONS).map(([id, config]) => (
-                <option key={id} value={id}>
-                  {config.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
+        <section className="surface-panel mb-3 grid grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-3 rounded-xl border p-3 backdrop-blur sm:mb-6 sm:grid-cols-2 sm:gap-5 sm:rounded-3xl sm:p-7 lg:grid-cols-[1.4fr_0.55fr_0.8fr]">
           <PokemonSearch
+            className="col-span-2 lg:col-span-1"
             generation={generation}
             key={generation}
             onQueryChange={changePokemonQuery}
@@ -228,16 +232,16 @@ function App() {
             selectedPokemon={selectedPokemon}
           />
 
-          <div>
+          <div className="min-w-0">
             <label
-              className="field-label mb-2 block text-sm font-semibold"
+              className="field-label mb-1 block text-xs font-semibold sm:mb-2 sm:text-sm"
               htmlFor="level"
             >
               等級
             </label>
             <NumberInput
               ariaLabel="等級"
-              className="h-[54px]"
+              className="h-11 sm:h-[54px]"
               describedBy={parsedLevel === null ? 'level-error' : undefined}
               id="level"
               invalid={parsedLevel === null}
@@ -253,15 +257,15 @@ function App() {
             )}
           </div>
 
-          <div>
+          <div className="min-w-0">
             <label
-              className="field-label mb-2 block text-sm font-semibold"
+              className="field-label mb-1 block text-xs font-semibold sm:mb-2 sm:text-sm"
               htmlFor="nature"
             >
               性格
             </label>
             <select
-              className="select-control h-[54px] w-full border px-4 text-base outline-none transition"
+              className="select-control h-11 w-full border px-3 text-sm outline-none transition sm:h-[54px] sm:px-4 sm:text-base"
               id="nature"
               onChange={(event) => setNatureId(event.target.value)}
               value={natureId}
@@ -276,20 +280,20 @@ function App() {
         </section>
 
         {selectedPokemon ? (
-          <section className="selected-card mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-5 py-4">
-            <div>
-              <span className="suggestion-id mr-3 font-mono text-sm font-bold">
+          <section className="selected-card mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 rounded-xl border px-3 py-2.5 sm:mb-5 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-3 sm:rounded-2xl sm:px-5 sm:py-4">
+            <div className="flex min-w-0 items-baseline">
+              <span className="suggestion-id mr-2 shrink-0 font-mono text-xs font-bold sm:mr-3 sm:text-sm">
                 {formatDexNumber(selectedPokemon.id)}
               </span>
-              <span className="text-lg font-black text-white">
+              <span className="truncate text-base font-black text-white sm:text-lg">
                 {selectedPokemon.displayName}
               </span>
-              <span className="ml-2 text-sm text-slate-500">
+              <span className="ml-2 hidden text-sm text-slate-500 sm:inline">
                 {selectedPokemon.englishName}
               </span>
             </div>
             <div
-              className={`rounded-full px-3 py-1 text-xs font-bold ${
+              className={`ev-total-badge rounded-full px-2 py-1 text-[11px] font-bold sm:px-3 sm:text-xs ${
                 isEvTotalValid
                   ? 'bg-slate-800 text-slate-300'
                   : 'bg-red-500/15 text-red-300'
@@ -297,14 +301,38 @@ function App() {
             >
               EV 合計 {evTotal} / 510
             </div>
+
+            <div
+              aria-label="種族值"
+              className="base-stats-strip col-span-full mt-2 grid grid-cols-6 border-t pt-2 sm:hidden"
+              role="group"
+            >
+              {STAT_NAMES.map((stat) => (
+                <div className="base-stat-cell text-center" key={stat}>
+                  <span className="block text-[9px] font-semibold leading-3 text-slate-500">
+                    {STAT_SHORT_LABELS[stat]}
+                  </span>
+                  <span className="block font-mono text-sm font-bold leading-4 text-slate-200">
+                    {selectedPokemon.stats[stat]}
+                  </span>
+                </div>
+              ))}
+            </div>
           </section>
         ) : (
-          <section className="empty-card mb-5 rounded-2xl border px-5 py-4 text-center text-sm">
+          <section className="empty-card mb-3 rounded-xl border px-3 py-2.5 text-center text-xs sm:mb-5 sm:rounded-2xl sm:px-5 sm:py-4 sm:text-sm">
             請先搜尋並選擇一隻寶可夢
           </section>
         )}
 
-        <section className="stats-panel overflow-hidden rounded-3xl border">
+        <section className="stats-panel overflow-hidden rounded-xl border sm:rounded-3xl">
+          <div className="mobile-stat-grid mobile-stats-header grid items-center gap-x-1 px-2 text-center sm:hidden">
+            <span className="text-left">能力</span>
+            <span>實際值</span>
+            <span>EV</span>
+            <span>IV</span>
+          </div>
+
           <div className="stats-header hidden grid-cols-[1.25fr_0.65fr_1fr_1fr_1.2fr] gap-3 px-5 py-3 text-base font-bold uppercase tracking-wider sm:grid">
             <span>能力</span>
             <span>種族值</span>
@@ -329,7 +357,7 @@ function App() {
           ))}
         </section>
 
-        <footer className="footer-copy mt-6 flex flex-col gap-2 px-2 text-xs leading-5">
+        <footer className="footer-copy mt-4 flex flex-col gap-1.5 px-1 text-[11px] leading-4 sm:mt-6 sm:gap-2 sm:px-2 sm:text-xs sm:leading-5">
           <p>
             資料來源：
             <a
