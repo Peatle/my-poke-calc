@@ -29,7 +29,26 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     expect(screen.getByRole('combobox', { name: '遊戲世代' })).toHaveValue(
       'gen9',
     )
-    expect(screen.getByText('GEN 9 · IV CALCULATOR')).toBeInTheDocument()
+    expect(screen.getAllByRole('combobox', { name: '遊戲世代' })).toHaveLength(1)
+    expect(
+      screen.getByRole('combobox', { name: '遊戲世代' }),
+    ).toHaveDisplayValue('GEN 9')
+  })
+
+  it('未選擇寶可夢時保留緊湊能力表格並停用輸入', () => {
+    render(<App />)
+
+    expect(screen.getByText('實際值')).toBeInTheDocument()
+    expect(screen.getAllByText('IV')).toHaveLength(1)
+    expect(
+      screen.getAllByRole('spinbutton', { name: /實際能力值$/ }),
+    ).toHaveLength(6)
+
+    for (const input of screen.getAllByRole('spinbutton', {
+      name: /實際能力值$/,
+    })) {
+      expect(input).toBeDisabled()
+    }
   })
 
   it('空白搜尋不顯示建議，輸入文字後才顯示結果', async () => {
@@ -256,8 +275,9 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
       'gen8',
     )
 
-    expect(screen.getByText('GEN 8 · IV CALCULATOR')).toBeInTheDocument()
-    expect(screen.queryByText('GEN 9 · IV CALCULATOR')).not.toBeInTheDocument()
+    expect(
+      screen.getByRole('combobox', { name: '遊戲世代' }),
+    ).toHaveDisplayValue('GEN 8')
 
     await selectPokemon('克雷色利亞', /#0488.*克雷色利亞.*Cresselia/i)
 
@@ -270,10 +290,16 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
 
     expect(defenseRow).not.toBeNull()
     expect(specialDefenseRow).not.toBeNull()
-    expect(within(defenseRow as HTMLElement).getAllByText('120')).toHaveLength(2)
     expect(
-      within(specialDefenseRow as HTMLElement).getAllByText('130'),
-    ).toHaveLength(2)
+      within(defenseRow as HTMLElement).getByText('120'),
+    ).toBeInTheDocument()
+    expect(
+      within(specialDefenseRow as HTMLElement).getByText('130'),
+    ).toBeInTheDocument()
+
+    const baseStats = screen.getByRole('group', { name: '種族值' })
+    expect(within(baseStats).getAllByText('120')).toHaveLength(2)
+    expect(within(baseStats).getByText('130')).toBeInTheDocument()
 
     const levelInput = screen.getByRole('spinbutton', { name: '等級' })
     await user.clear(levelInput)
@@ -316,7 +342,7 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     expect(screen.getByLabelText('攻擊EV')).toHaveValue(0)
   })
 
-  it('世代切換會關閉舊搜尋結果，重設全部則保留目前世代', async () => {
+  it('世代切換會關閉舊搜尋結果，重設則保留目前世代', async () => {
     const user = userEvent.setup()
     render(<App />)
 
@@ -336,7 +362,7 @@ describe('Gen 8／Gen 9 IV 計算器 UI', () => {
     await user.type(resetSearchInput, '899')
     expect(screen.getByText('找不到符合的寶可夢')).toBeInTheDocument()
 
-    await user.click(screen.getByRole('button', { name: '重設全部' }))
+    await user.click(screen.getByRole('button', { name: '重設' }))
     expect(screen.getByRole('combobox', { name: '遊戲世代' })).toHaveValue(
       'gen8',
     )
